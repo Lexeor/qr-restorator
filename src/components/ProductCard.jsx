@@ -1,10 +1,11 @@
 import React from "react";
 
-function ProductCard(meal) {
+function ProductCard({ data }) {
+  console.log(data);
   return (
     <article className="product-card">
-      <img src={meal.strMealThumb} alt="" />
-      <div className="card__body">{meal.strMeal}</div>
+      <img src={data.strMealThumb} alt="" />
+      <div className="card__body">{data.strMeal}</div>
     </article>
   );
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ProductCard from "./ProductCard";
 
-const dishes = [52767, 53063, 52769];
+const dishes = [52767];
 
 function Content() {
   // set loading to true initially
@@ -21,8 +21,6 @@ function Content() {
     };
 
     await dataFetch(dishes[0], productsArr);
-    await dataFetch(dishes[1], productsArr);
-    await dataFetch(dishes[2], productsArr);
 
     setProducts(productsArr);
     setIsLoading(false);
@@ -34,13 +32,15 @@ function Content() {
 
   const renderCards =
     products && products.length > 0 ? (
-      products.map((prod) => <ProductCard key={prod.idMeal} data={prod.data} />)
+      products.map((prod) => <ProductCard key={prod.idMeal} data={prod} />)
     ) : (
       <>Loading...</>
     );
 
   return (
     <main>
+      <h2>Food Categories</h2>
+      <h2>Popular</h2>
       <div className="cards-wrapper">{renderCards}</div>
     </main>
   );
