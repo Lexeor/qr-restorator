@@ -11,7 +11,9 @@ function ProductCard({ data }) {
         <h3 className="card-main">{data.strMeal}</h3>
         <div className="card-footer">
           <span className="card-cost">$12</span>
-          <button>+</button>
+          <button className="btn-add">
+            <i className="ri-add-line"></i>
+          </button>
         </div>
       </div>
     </article>

@@ -1,13 +1,28 @@
 import React, { useState, useEffect } from "react";
 import ProductCard from "./ProductCard";
+import CategoryCard from "./CategoryCard";
 
-const dishes = [52767, 52867];
+const dishes = [52767, 52867, 52793, 53043, 52876];
 
 function Content() {
   // set loading to true initially
   const [isLoading, setIsLoading] = useState(true);
 
   const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
+
+  const loadCategories = async () => {
+    const dataFetch = async () => {
+      const response = await fetch(
+        `https://www.themealdb.com/api/json/v1/1/categories.php`
+      );
+      const data = await response.json();
+      // productsArr.push(data.meals[0]);
+      setCategories(data.categories);
+    };
+
+    await dataFetch();
+  };
 
   const loadPictures = async () => {
     const productsArr = [];
@@ -22,6 +37,9 @@ function Content() {
 
     await dataFetch(dishes[0], productsArr);
     await dataFetch(dishes[1], productsArr);
+    await dataFetch(dishes[2], productsArr);
+    await dataFetch(dishes[3], productsArr);
+    await dataFetch(dishes[4], productsArr);
 
     setProducts(productsArr);
     setIsLoading(false);
@@ -29,6 +47,7 @@ function Content() {
 
   useEffect(() => {
     loadPictures();
+    loadCategories();
   }, []);
 
   const renderCards =
@@ -38,11 +57,21 @@ function Content() {
       <>Loading...</>
     );
 
+  const renderCategories =
+    categories && categories.length > 0 ? (
+      categories.map((cat) => <CategoryCard key={cat.idCategory} data={cat} />)
+    ) : (
+      <>Loading...</>
+    );
+
   return (
     <main>
-      <h2>Food Categories</h2>
-      <h2>Popular</h2>
-      <div className="cards-wrapper">{renderCards}</div>
+      <div className="content-wrapper">
+        <h2>Food Categories</h2>
+        <div className="categories-wrapper">{renderCategories}</div>
+        <h2>Popular</h2>
+        <div className="cards-wrapper">{renderCards}</div>
+      </div>
     </main>
   );
 }
