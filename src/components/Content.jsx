@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ProductCard from "./ProductCard";
 
-const dishes = [52767];
+const dishes = [52767, 52867];
 
 function Content() {
   // set loading to true initially
@@ -21,6 +21,7 @@ function Content() {
     };
 
     await dataFetch(dishes[0], productsArr);
+    await dataFetch(dishes[1], productsArr);
 
     setProducts(productsArr);
     setIsLoading(false);

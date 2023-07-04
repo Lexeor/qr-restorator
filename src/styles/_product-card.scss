@@ -7,9 +7,40 @@
 .product-card {
   display: flex;
   flex-direction: row;
+  background-color: white;
+  border-radius: $border-radius-m;
+  padding: 1em;
   gap: 1em;
 
   img {
-    width: 150px;
+    width: 120px;
+    border-radius: $border-radius-m;
   }
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .card-main {
+    flex-grow: 1;
+  }
+
+  .card-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .card-cost {
+    font-weight: bold;
+  }
+}
+
+.type-span {
+  background-color: $color-tag;
+  border-radius: $border-radius-s;
+  font-size: 0.8em;
+  padding: 0.5em 1em;
 }

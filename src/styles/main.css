@@ -23,6 +23,10 @@ body {
   font-family: "Inter Tight", sans-serif;
 }
 
+h3 {
+  margin: 0.6em 0 0.4em 0;
+}
+
 .App {
   width: 100%;
   max-width: 100vw;
@@ -41,6 +45,11 @@ main {
   min-height: 100vh;
 }
 
+button.menu {
+  border-radius: 50%;
+  background-color: #2a2a2a;
+}
+
 .cards-wrapper {
   display: flex;
   flex-direction: column;
@@ -50,8 +59,36 @@ main {
 .product-card {
   display: flex;
   flex-direction: row;
+  background-color: white;
+  border-radius: 20px;
+  padding: 1em;
   gap: 1em;
 }
 .product-card img {
-  width: 150px;
+  width: 120px;
+  border-radius: 20px;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.card-body .card-main {
+  flex-grow: 1;
+}
+.card-body .card-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.card-body .card-cost {
+  font-weight: bold;
+}
+
+.type-span {
+  background-color: #f3ecdc;
+  border-radius: 10px;
+  font-size: 0.8em;
+  padding: 0.5em 1em;
 }/*# sourceMappingURL=main.css.map */
