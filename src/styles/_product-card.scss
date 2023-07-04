@@ -1,0 +1,15 @@
+.cards-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+
+  img {
+    width: 150px;
+  }
+}
