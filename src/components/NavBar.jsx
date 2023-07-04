@@ -6,7 +6,7 @@ const NavBar = () => {
       <div className="nav-location">
         <div className="nav-location-title">Shakespeare</div>
         <div className="nav-location-place">
-          <i className="ri-map-pin-2-fill"></i>
+          <i className="ri-map-pin-fill"></i>
           Akdeniz Blv. No:53
         </div>
       </div>

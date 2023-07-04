@@ -66,7 +66,10 @@ function Content() {
 
   return (
     <main>
-      <div className="content-wrapper">
+      <div
+        className="content-wrapper"
+        style={{ height: window.innerHeight - 70 }}
+      >
         <h2>Food Categories</h2>
         <div className="categories-wrapper">{renderCategories}</div>
         <h2>Popular</h2>

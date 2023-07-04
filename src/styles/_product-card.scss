@@ -9,7 +9,7 @@
   flex-direction: row;
   background-color: white;
   border-radius: $border-radius-m;
-  padding: 1em;
+  padding: 0.7em;
   gap: 1em;
 
   img {
@@ -36,6 +36,7 @@
 
   .card-cost {
     font-weight: bold;
+    font-size: 1.3em;
   }
 }
 
