@@ -1,11 +1,31 @@
 nav {
   display: flex;
+  flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   width: 100%;
-  height: 60px;
+  height: 70px;
   background-color: #111111;
   color: whitesmoke;
   padding: 1em;
+}
+
+.nav-location {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.nav-location .nav-location-title {
+  font-weight: lighter;
+}
+.nav-location .nav-location-place {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+}
+.nav-location .nav-location-place i {
+  color: #e8b225;
 }
 
 * {
@@ -21,6 +41,10 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Inter Tight", sans-serif;
+}
+
+h2 {
+  margin-top: 0.5em;
 }
 
 h3 {
@@ -47,7 +71,12 @@ main {
 
 button.menu {
   border-radius: 50%;
+  border: 0;
   background-color: #2a2a2a;
+  color: whitesmoke;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2em;
 }
 
 .cards-wrapper {
