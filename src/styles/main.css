@@ -82,6 +82,7 @@ main {
   background-color: #eeeeee;
   border-radius: 40px 40px 0 0;
   min-height: calc(100vh - 70px);
+  position: relative;
   overflow: hidden;
 }
 
@@ -109,7 +110,7 @@ main {
 }
 
 .content-wrapper {
-  overflow-x: hidden;
+  overflow: hidden;
   overflow-y: scroll;
   padding: 0.5em;
 }

@@ -54,6 +54,7 @@ main {
   background-color: $color-background-light;
   border-radius: $border-radius-l $border-radius-l 0 0;
   min-height: calc(100vh - 70px);
+  position: relative;
   overflow: hidden;
 }
 
@@ -68,8 +69,7 @@ main {
 }
 
 .content-wrapper {
-  // height: 772px;
-  overflow-x: hidden;
+  overflow: hidden;
   overflow-y: scroll;
   padding: $padding-min;
   @include scrollbars(0, $color-primary);
