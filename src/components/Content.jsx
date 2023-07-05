@@ -4,7 +4,7 @@ import CategoryCard from "./CategoryCard";
 
 const dishes = [52767, 52867, 52793, 53043, 52876];
 
-function Content({ toggleSubheader }) {
+function Content({ toggleSubheader, showDetails }) {
   // set loading to true initially
   const [isLoading, setIsLoading] = useState(true);
 
@@ -70,12 +70,18 @@ function Content({ toggleSubheader }) {
       <>Loading...</>
     );
 
+  // Styles
+  const mainStyle = showDetails
+    ? { maxHeight: "calc(100vh - 140px)" }
+    : { maxHeight: "calc(100vh - 70px)" };
+
+  const contentStyle = showDetails
+    ? { height: window.innerHeight - 140 }
+    : { height: window.innerHeight - 70 };
+
   return (
-    <main>
-      <div
-        className="content-wrapper"
-        style={{ height: window.innerHeight - 70 }}
-      >
+    <main style={mainStyle}>
+      <div className="content-wrapper" style={contentStyle}>
         <h2>Food Categories</h2>
         <div className="categories-wrapper">{renderCategories}</div>
         <h2>Popular</h2>

@@ -33,13 +33,10 @@ header {
 
 .subheader {
   padding: 0 $padding-std;
-  height: 0px;
+  height: 70px;
   color: $text-light;
   font-size: 1.5em;
-  transition: all 0.3s ease-in-out;
-
-  &.show {
-    height: auto;
-    padding: $padding-min $padding-std;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

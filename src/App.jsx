@@ -19,8 +19,8 @@ function App() {
   return (
     <div className="App">
       <NavBar showCart={showCart} toggleShowCart={toggleShowCart} />
-      <Subheader show={showDetails} />
-      <Content toggleSubheader={toggleSubheader} />
+      <Subheader />
+      <Content toggleSubheader={toggleSubheader} showDetails={showDetails} />
       <Cart show={showCart} />
     </div>
   );
