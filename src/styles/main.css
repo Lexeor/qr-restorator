@@ -230,7 +230,7 @@ button.btn-add {
   width: 100%;
 }
 
-.cart {
+.panel {
   width: 100%;
   color: rgb(19, 19, 19);
   padding: 0 0.5em;
@@ -243,6 +243,12 @@ button.btn-add {
   left: 0;
   transition: top 0.3s ease-in-out;
 }
-.cart.hidden {
+.panel.cart {
+  z-index: 100;
+}
+.panel.product {
+  top: 140px;
+}
+.panel.hidden {
   top: 100vh;
 }/*# sourceMappingURL=main.css.map */

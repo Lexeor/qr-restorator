@@ -2,6 +2,7 @@ import { useState } from "react";
 import NavBar from "./components/NavBar";
 import Content from "./components/Content";
 import Cart from "./components/Cart";
+import ProductDetails from "./components/ProductDetails";
 import Subheader from "./components/Subheader";
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
       <Subheader />
       <Content toggleSubheader={toggleSubheader} showDetails={showDetails} />
       <Cart show={showCart} />
+      <ProductDetails show={showDetails} />
     </div>
   );
 }

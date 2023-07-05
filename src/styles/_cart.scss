@@ -1,4 +1,4 @@
-.cart {
+.panel {
   width: 100%;
   color: $text-dark;
   padding: 0 $padding-min;
@@ -10,6 +10,14 @@
   top: 70px;
   left: 0;
   transition: top 0.3s ease-in-out;
+
+  &.cart {
+    z-index: 100;
+  }
+
+  &.product {
+    top: 140px;
+  }
 
   &.hidden {
     top: 100vh;
