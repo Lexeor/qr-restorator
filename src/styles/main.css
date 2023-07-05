@@ -213,4 +213,21 @@ button.btn-add {
 }
 .card-cat img {
   width: 100%;
+}
+
+.cart {
+  width: 100%;
+  color: rgb(19, 19, 19);
+  padding: 0 0.5em;
+  background-color: #eeeeee;
+  border-radius: 40px 40px 0 0;
+  min-height: calc(100vh - 70px);
+  overflow: hidden;
+  position: fixed;
+  top: 70px;
+  left: 0;
+  transition: top 0.3s ease-in-out;
+}
+.cart.hidden {
+  top: 100vh;
 }/*# sourceMappingURL=main.css.map */

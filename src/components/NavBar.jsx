@@ -1,6 +1,6 @@
 import React from "react";
 
-const NavBar = () => {
+const NavBar = ({ showCart, toggleShowCart }) => {
   return (
     <nav>
       <div className="nav-location">
@@ -11,8 +11,12 @@ const NavBar = () => {
         </div>
       </div>
       <div className="nav-buttons">
-        <button className="menu">
-          <i className="ri-shopping-cart-line"></i>
+        <button className="menu" onClick={() => toggleShowCart()}>
+          {showCart ? (
+            <i className="ri-bill-line"></i>
+          ) : (
+            <i className="ri-shopping-cart-line"></i>
+          )}
         </button>
       </div>
     </nav>

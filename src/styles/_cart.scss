@@ -1,0 +1,17 @@
+.cart {
+  width: 100%;
+  color: $text-dark;
+  padding: 0 $padding-min;
+  background-color: $color-background-light;
+  border-radius: $border-radius-l $border-radius-l 0 0;
+  min-height: calc(100vh - 70px);
+  overflow: hidden;
+  position: fixed;
+  top: 70px;
+  left: 0;
+  transition: top 0.3s ease-in-out;
+
+  &.hidden {
+    top: 100vh;
+  }
+}
