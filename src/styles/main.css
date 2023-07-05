@@ -126,6 +126,10 @@ main {
   overflow: hidden;
   overflow-y: scroll;
   padding: 0.5em;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
 }
 .content-wrapper::-webkit-scrollbar {
   width: 0;
@@ -142,6 +146,14 @@ main {
   scrollbar-track-color: #f4d992;
 }
 
+.panel-header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
 button {
   display: flex;
   align-items: center;
@@ -156,12 +168,44 @@ button.menu {
   height: 40px;
   font-size: 1.2em;
 }
+button.btn-panel {
+  border-radius: 50%;
+  background-color: #e1e1e1;
+  color: rgb(19, 19, 19);
+  width: 40px;
+  height: 40px;
+  font-size: 1.2em;
+}
 button.btn-add {
   border-radius: 50%;
   background-color: #e8b225;
   width: 35px;
   height: 35px;
   font-size: 1.4em;
+}
+button.btn-primary {
+  border-radius: 20px;
+  background-color: #e8b225;
+  padding: 0.8em;
+}
+
+.btn-addRemove {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  border-radius: 20px;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  color: whitesmoke;
+  background-color: #e8b225;
+  height: 35px;
+}
+.btn-addRemove button {
+  background-color: transparent;
+  color: whitesmoke;
+  border: 0;
+  font-size: 1.4rem;
 }
 
 .cards-wrapper {
@@ -209,6 +253,13 @@ button.btn-add {
   padding: 0.5em 1em;
 }
 
+.current-qty {
+  width: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .card-cat {
   display: flex;
   flex-direction: column;
@@ -242,6 +293,7 @@ button.btn-add {
   top: 70px;
   left: 0;
   transition: top 0.3s ease-in-out;
+  display: flex;
 }
 .panel.cart {
   z-index: 100;
@@ -251,4 +303,14 @@ button.btn-add {
 }
 .panel.hidden {
   top: 100vh;
+}
+
+.product-details {
+  flex-grow: 1;
+}
+
+.product-footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }/*# sourceMappingURL=main.css.map */

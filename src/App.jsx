@@ -5,9 +5,13 @@ import Cart from "./components/Cart";
 import ProductDetails from "./components/ProductDetails";
 import Subheader from "./components/Subheader";
 
+import { useSelector, useDispatch } from "react-redux";
+
 function App() {
   const [showCart, setShowCart] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
+
+  const cartItems = useSelector((state) => state.cart.itemsList);
 
   function toggleShowCart() {
     setShowCart((prev) => !prev);
@@ -22,7 +26,7 @@ function App() {
       <NavBar showCart={showCart} toggleShowCart={toggleShowCart} />
       <Subheader />
       <Content toggleSubheader={toggleSubheader} showDetails={showDetails} />
-      <Cart show={showCart} />
+      <Cart show={showCart} items={cartItems} />
       <ProductDetails show={showDetails} toggleSubheader={toggleSubheader} />
     </div>
   );
