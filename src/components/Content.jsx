@@ -4,7 +4,7 @@ import CategoryCard from "./CategoryCard";
 
 const dishes = [52767, 52867, 52793, 53043, 52876];
 
-function Content() {
+function Content({ toggleSubheader }) {
   // set loading to true initially
   const [isLoading, setIsLoading] = useState(true);
 
@@ -52,7 +52,13 @@ function Content() {
 
   const renderCards =
     products && products.length > 0 ? (
-      products.map((prod) => <ProductCard key={prod.idMeal} data={prod} />)
+      products.map((prod) => (
+        <ProductCard
+          key={prod.idMeal}
+          data={prod}
+          toggleSubheader={toggleSubheader}
+        />
+      ))
     ) : (
       <>Loading...</>
     );

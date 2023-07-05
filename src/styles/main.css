@@ -1,4 +1,4 @@
-nav {
+header {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -26,6 +26,18 @@ nav {
 }
 .nav-location .nav-location-place i {
   color: #e8b225;
+}
+
+.subheader {
+  padding: 0 1em;
+  height: 0px;
+  color: whitesmoke;
+  font-size: 1.5em;
+  transition: all 0.3s ease-in-out;
+}
+.subheader.show {
+  height: auto;
+  padding: 0.5em 1em;
 }
 
 /** 

@@ -2,7 +2,7 @@ import React from "react";
 
 const NavBar = ({ showCart, toggleShowCart }) => {
   return (
-    <nav>
+    <header>
       <div className="nav-location">
         <div className="nav-location-title">Shakespeare</div>
         <div className="nav-location-place">
@@ -19,7 +19,7 @@ const NavBar = ({ showCart, toggleShowCart }) => {
           )}
         </button>
       </div>
-    </nav>
+    </header>
   );
 };
 

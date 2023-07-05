@@ -1,8 +1,8 @@
 import React from "react";
 
-function ProductCard({ data }) {
+function ProductCard({ data, toggleSubheader }) {
   return (
-    <article className="product-card">
+    <article className="product-card" onClick={toggleSubheader}>
       <img src={data.strMealThumb} alt="" />
       <div className="card-body">
         <div className="card-header">
