@@ -69,6 +69,7 @@ main {
   width: 100%;
   overflow-x: auto;
   @include scrollbars(0, $color-primary);
+  flex-shrink: 0;
 }
 
 .content-wrapper {
@@ -78,7 +79,6 @@ main {
   @include scrollbars(0, $color-primary);
   display: flex;
   flex-direction: column;
-  height: 100%;
   width: 100%;
 }
 
@@ -134,7 +134,7 @@ button {
 .btn-addRemove {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 5px;
   border-radius: $border-radius-m;
   align-items: center;
   justify-content: center;
