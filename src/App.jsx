@@ -23,7 +23,7 @@ function App() {
       <Subheader />
       <Content toggleSubheader={toggleSubheader} showDetails={showDetails} />
       <Cart show={showCart} />
-      <ProductDetails show={showDetails} />
+      <ProductDetails show={showDetails} toggleSubheader={toggleSubheader} />
     </div>
   );
 }

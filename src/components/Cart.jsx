@@ -1,7 +1,7 @@
 import React from "react";
 
 function Cart({ show }) {
-  const containerClass = show ? "panel" : "panel hidden";
+  const containerClass = show ? "panel cart" : "panel cart hidden";
 
   return (
     <div className={containerClass}>
