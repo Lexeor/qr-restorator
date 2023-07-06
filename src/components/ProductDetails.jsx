@@ -1,9 +1,42 @@
 import React from "react";
-import { useSelector, useReducer } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { addToCart, removeFromCart } from "../app/cartSlice";
 
 function ProductDetails({ show, toggleSubheader }) {
   const product = useSelector((state) => state.selected.item);
   const containerClass = show ? "panel product" : "panel product hidden";
+
+  console.log(product);
+
+  const dispatch = useDispatch();
+  const quantityInCart = useSelector(
+    (state) =>
+      state.cart.itemsList.find((item) => item.id === product.idMeal)?.quantity
+  );
+
+  const addHandler = (e) => {
+    e.stopPropagation();
+
+    dispatch(
+      addToCart({
+        id: product.idMeal,
+        price: 10,
+        name: product.strMeal,
+        cover: product.strMealThumb,
+      })
+    );
+  };
+
+  const removeHandler = (e) => {
+    e.stopPropagation();
+
+    dispatch(
+      removeFromCart({
+        id: product.idMeal,
+        price: 10,
+      })
+    );
+  };
 
   return (
     <div className={containerClass}>
@@ -15,7 +48,21 @@ function ProductDetails({ show, toggleSubheader }) {
         <section className="product-details">{product.strInstructions}</section>
         <section className="product-footer">
           <span className="cost">$12</span>
-          <button className="btn-primary">Add to order</button>
+          {!quantityInCart ? (
+            <button className="btn-primary" onClick={addHandler}>
+              Add to order
+            </button>
+          ) : (
+            <div className="btn-addRemove">
+              <button onClick={removeHandler}>
+                <i className="ri-subtract-line"></i>
+              </button>
+              <span className="current-qty">{quantityInCart}</span>
+              <button onClick={addHandler}>
+                <i className="ri-add-line"></i>
+              </button>
+            </div>
+          )}
         </section>
       </div>
     </div>
