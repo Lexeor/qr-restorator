@@ -1,19 +1,18 @@
 import React from "react";
+import { useSelector, useReducer } from "react-redux";
 
 function ProductDetails({ show, toggleSubheader }) {
+  const product = useSelector((state) => state.selected.item);
   const containerClass = show ? "panel product" : "panel product hidden";
 
   return (
     <div className={containerClass}>
-      <div className="content-wrapper">
-        <div className="panel-header">
-          <h2>Product details</h2>
-          <button className="btn-panel" onClick={() => toggleSubheader()}>
-            <i className="ri-close-line"></i>
-          </button>
-        </div>
-        <img src="" alt="" />
-        <section className="product-details">Details here</section>
+      <button className="btn-panel absolute" onClick={() => toggleSubheader()}>
+        <i className="ri-close-line"></i>
+      </button>
+      <img src={product.strMealThumb} alt="" className="product-details-img" />
+      <div className="content-wrapper product">
+        <section className="product-details">{product.strInstructions}</section>
         <section className="product-footer">
           <span className="cost">$12</span>
           <button className="btn-primary">Add to order</button>

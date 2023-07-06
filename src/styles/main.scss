@@ -86,6 +86,11 @@ main {
   display: flex;
   flex-direction: column;
   width: 100%;
+  position: relative;
+
+  &.product {
+    padding: $padding-std;
+  }
 }
 
 .panel-header {
@@ -122,6 +127,12 @@ button {
     width: 40px;
     height: 40px;
     font-size: 1.2em;
+
+    &.absolute {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
   }
 
   &.btn-add {
@@ -175,3 +186,4 @@ button {
 @import "./category-card";
 @import "./cart";
 @import "./details-view";
+@import "./product-details";

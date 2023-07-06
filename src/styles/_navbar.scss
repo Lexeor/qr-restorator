@@ -33,12 +33,12 @@ header {
 
 .subheader {
   padding: 0 $padding-std;
-  height: 70px;
+  height: 40px;
   color: $text-light;
   font-size: 1.5em;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .ri-shopping-cart-line {

@@ -68,11 +68,11 @@ function Content({ toggleSubheader, showDetails }) {
 
   // Styles
   const mainStyle = showDetails
-    ? { maxHeight: "calc(100vh - 140px)" }
+    ? { maxHeight: "calc(100vh - 110px)" }
     : { maxHeight: "calc(100vh - 70px)" };
 
   const contentStyle = showDetails
-    ? { height: window.innerHeight - 140 }
+    ? { height: window.innerHeight - 110 }
     : { height: window.innerHeight - 70 };
 
   return (

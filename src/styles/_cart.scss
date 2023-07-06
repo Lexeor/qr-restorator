@@ -11,13 +11,16 @@
   left: 0;
   transition: top 0.3s ease-in-out;
   display: flex;
+  flex-direction: column;
 
   &.cart {
     z-index: 100;
   }
 
   &.product {
-    top: 140px;
+    min-height: calc(100vh - 110px);
+    padding: 0;
+    top: 110px;
   }
 
   &.hidden {
