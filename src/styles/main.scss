@@ -100,6 +100,7 @@ button {
   color: $text-light;
 
   &.menu {
+    position: relative;
     border-radius: 50%;
     background-color: $color-secondary;
     width: 40px;

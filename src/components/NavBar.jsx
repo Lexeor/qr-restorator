@@ -1,6 +1,9 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 const NavBar = ({ showCart, toggleShowCart }) => {
+  const totalQuantity = useSelector((state) => state.cart.totalQuantity);
+
   return (
     <header>
       <div className="nav-location">
@@ -16,6 +19,9 @@ const NavBar = ({ showCart, toggleShowCart }) => {
             <i className="ri-bill-line"></i>
           ) : (
             <i className="ri-shopping-cart-line"></i>
+          )}
+          {totalQuantity > 0 && (
+            <div className="cart-count">{totalQuantity}</div>
           )}
         </button>
       </div>

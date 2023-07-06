@@ -38,6 +38,25 @@ header {
   align-items: center;
 }
 
+.ri-shopping-cart-line {
+  position: relative;
+}
+
+.cart-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  font-size: 0.7em;
+  background-color: #e8b225;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(19, 19, 19);
+}
+
 /** 
 * scrollbars mixin
  * @param  {size}                Scrollbar handler width & height
@@ -162,6 +181,7 @@ button {
   color: whitesmoke;
 }
 button.menu {
+  position: relative;
   border-radius: 50%;
   background-color: #2a2a2a;
   width: 40px;
