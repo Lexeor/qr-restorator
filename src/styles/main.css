@@ -204,6 +204,8 @@ button.btn-panel {
 button.btn-add {
   border-radius: 50%;
   background-color: #e8b225;
+  max-width: 35px;
+  max-height: 35px;
   width: 35px;
   height: 35px;
   font-size: 1.4em;
@@ -213,6 +215,8 @@ button.btn-primary {
   background-color: #e8b225;
   padding: 0.8em;
   text-transform: uppercase;
+  font-weight: 600;
+  font-size: 1.1em;
 }
 
 .btn-addRemove {
@@ -232,6 +236,12 @@ button.btn-primary {
   color: whitesmoke;
   border: 0;
   font-size: 1.4rem;
+}
+
+.action-link {
+  color: #e8b225;
+  font-weight: 500;
+  text-decoration: underline;
 }
 
 .cards-wrapper {

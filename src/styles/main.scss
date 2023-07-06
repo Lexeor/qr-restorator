@@ -125,6 +125,8 @@ button {
   &.btn-add {
     border-radius: 50%;
     background-color: $color-primary;
+    max-width: 35px;
+    max-height: 35px;
     width: 35px;
     height: 35px;
     font-size: 1.4em;
@@ -135,6 +137,8 @@ button {
     background-color: $color-primary;
     padding: 0.8em;
     text-transform: uppercase;
+    font-weight: 600;
+    font-size: 1.1em;
   }
 }
 
@@ -156,6 +160,12 @@ button {
     border: 0;
     font-size: 1.4rem;
   }
+}
+
+.action-link {
+  color: $color-primary;
+  font-weight: 500;
+  text-decoration: underline;
 }
 
 @import "./product-card";

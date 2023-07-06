@@ -1,10 +1,15 @@
 import React from "react";
 import CartItem from "./CartItem";
 import { useSelector, useDispatch } from "react-redux";
-import { addToCart, removeFromCart } from "../app/cartSlice";
+import { clearCart } from "../app/cartSlice";
 
 function Cart({ show, items }) {
   const containerClass = show ? "panel cart" : "panel cart hidden";
+  const dispatch = useDispatch();
+
+  const clearHandler = () => {
+    dispatch(clearCart());
+  };
 
   const totalPrice = useSelector((state) =>
     state.cart.itemsList?.reduce((acc, item) => {
@@ -20,7 +25,12 @@ function Cart({ show, items }) {
   return (
     <div className={containerClass}>
       <div className="content-wrapper">
-        <h2>Your order</h2>
+        <div className="panel-header">
+          <h2>Your order</h2>
+          <span className="action-link" onClick={clearHandler}>
+            Remove all
+          </span>
+        </div>
         <section className="cart-items-wrapper">{renderItems}</section>
         <hr />
         <div className="totals">
