@@ -47,7 +47,7 @@ function ProductDetails({ show, toggleSubheader }) {
       <div className="content-wrapper product">
         <section className="product-details">{product.strInstructions}</section>
         <section className="product-footer">
-          <span className="cost">$12</span>
+          <strong>$12</strong>
           {!quantityInCart ? (
             <button className="btn-primary" onClick={addHandler}>
               Add to order

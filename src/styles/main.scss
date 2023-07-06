@@ -27,7 +27,7 @@ hr {
 // Typographics
 
 h2 {
-  margin-top: 0.7em;
+  margin-top: 0.4em;
   margin-bottom: 0.5em;
   font-size: 1.4em;
 }
@@ -79,7 +79,7 @@ main {
 }
 
 .content-wrapper {
-  overflow: hidden;
+  overflow-x: hidden;
   overflow-y: scroll;
   padding: $padding-min;
   @include scrollbars(0, $color-primary);
@@ -148,10 +148,11 @@ button {
   &.btn-primary {
     border-radius: $border-radius-m;
     background-color: $color-primary;
-    padding: 0.8em;
     text-transform: uppercase;
     font-weight: 600;
-    font-size: 1.1em;
+    height: 35px;
+    font-size: 0.9em;
+    width: 70%;
   }
 }
 
