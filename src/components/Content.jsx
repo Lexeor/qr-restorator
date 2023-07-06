@@ -5,9 +5,6 @@ import CategoryCard from "./CategoryCard";
 const dishes = [52767, 52867, 52793, 53043, 52876];
 
 function Content({ toggleSubheader, showDetails }) {
-  // set loading to true initially
-  const [isLoading, setIsLoading] = useState(true);
-
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
 
@@ -42,7 +39,6 @@ function Content({ toggleSubheader, showDetails }) {
     await dataFetch(dishes[4], productsArr);
 
     setProducts(productsArr);
-    setIsLoading(false);
   };
 
   useEffect(() => {

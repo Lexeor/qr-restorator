@@ -6,8 +6,10 @@ import ProductDetails from "./components/ProductDetails";
 import Subheader from "./components/Subheader";
 
 import { useSelector, useDispatch } from "react-redux";
+import { set } from "./app/selectedSlice";
 
 function App() {
+  const dispatch = useDispatch();
   const [showCart, setShowCart] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
 
@@ -17,7 +19,8 @@ function App() {
     setShowCart((prev) => !prev);
   }
 
-  function toggleSubheader() {
+  function toggleSubheader(data = {}) {
+    dispatch(set(data));
     setShowDetails((prev) => !prev);
   }
 

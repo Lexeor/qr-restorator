@@ -16,7 +16,6 @@ function Cart({ show, items }) {
       return acc + item.totalPrice;
     }, 0)
   );
-  const totalQuantity = useSelector((state) => state.cart.totalQuantity);
 
   const renderItems = items.map((item) => (
     <CartItem key={item.id} item={item} />
