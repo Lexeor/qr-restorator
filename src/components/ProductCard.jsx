@@ -35,7 +35,7 @@ function ProductCard({ data, toggleSubheader }) {
 
   return (
     <article className="product-card" onClick={toggleSubheader}>
-      <img src={data.strMealThumb} alt="" />
+      <img src={data.strMealThumb} alt="" loading="lazy" />
       <div className="card-body">
         <div className="card-header">
           <span className="type-span">{data.strCategory}</span>
