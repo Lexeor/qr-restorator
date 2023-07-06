@@ -24,3 +24,11 @@
     top: 100vh;
   }
 }
+
+.total-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 0.3em;
+  font-size: 1.2em;
+}

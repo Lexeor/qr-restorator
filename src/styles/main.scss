@@ -19,6 +19,11 @@ body {
   font-family: "Inter Tight", sans-serif;
 }
 
+hr {
+  color: $color-primary;
+  width: 100%;
+}
+
 // Typographics
 
 h2 {
@@ -129,6 +134,7 @@ button {
     border-radius: $border-radius-m;
     background-color: $color-primary;
     padding: 0.8em;
+    text-transform: uppercase;
   }
 }
 
