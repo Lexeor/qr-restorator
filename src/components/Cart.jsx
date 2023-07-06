@@ -1,4 +1,5 @@
 import React from "react";
+import CartItem from "./CartItem";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart, removeFromCart } from "../app/cartSlice";
 
@@ -13,16 +14,14 @@ function Cart({ show, items }) {
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
 
   const renderItems = items.map((item) => (
-    <div key={item.id}>
-      {item.quantity} {item.name} ${item.totalPrice}
-    </div>
+    <CartItem key={item.id} item={item} />
   ));
 
   return (
     <div className={containerClass}>
       <div className="content-wrapper">
         <h2>Your order</h2>
-        {renderItems}
+        <section className="cart-items-wrapper">{renderItems}</section>
         <hr />
         <div className="total-row">
           <span>Total</span>

@@ -339,6 +339,21 @@ button.btn-primary {
   font-size: 1.2em;
 }
 
+.cart-items-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.cart-item {
+  display: flex;
+  flex-direction: row;
+}
+.cart-item img {
+  width: 100px;
+  border-radius: 10px;
+}
+
 .product-details {
   flex-grow: 1;
 }

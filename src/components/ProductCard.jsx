@@ -9,8 +9,32 @@ function ProductCard({ data, toggleSubheader }) {
       state.cart.itemsList.find((item) => item.id === data.idMeal)?.quantity
   );
 
+  const addHandler = (e) => {
+    e.stopPropagation();
+
+    dispatch(
+      addToCart({
+        id: data.idMeal,
+        price: 10,
+        name: data.strMeal,
+        cover: data.strMealThumb,
+      })
+    );
+  };
+
+  const removeHandler = (e) => {
+    e.stopPropagation();
+
+    dispatch(
+      removeFromCart({
+        id: data.idMeal,
+        price: 10,
+      })
+    );
+  };
+
   return (
-    <article className="product-card">
+    <article className="product-card" onClick={toggleSubheader}>
       <img src={data.strMealThumb} alt="" />
       <div className="card-body">
         <div className="card-header">
@@ -20,48 +44,16 @@ function ProductCard({ data, toggleSubheader }) {
         <div className="card-footer">
           <span className="card-cost">$12</span>
           {!quantityInCart ? (
-            <button
-              className="btn-add"
-              onClick={() =>
-                dispatch(
-                  addToCart({
-                    id: data.idMeal,
-                    price: 10,
-                    name: data.strMeal,
-                    cover: data.strMealThumb,
-                  })
-                )
-              }
-            >
+            <button className="btn-add" onClick={addHandler}>
               <i className="ri-add-line"></i>
             </button>
           ) : (
             <div className="btn-addRemove">
-              <button
-                onClick={() =>
-                  dispatch(
-                    removeFromCart({
-                      id: data.idMeal,
-                      price: 10,
-                    })
-                  )
-                }
-              >
+              <button onClick={removeHandler}>
                 <i className="ri-subtract-line"></i>
               </button>
               <span className="current-qty">{quantityInCart}</span>
-              <button
-                onClick={() =>
-                  dispatch(
-                    addToCart({
-                      id: data.idMeal,
-                      price: 10,
-                      name: data.strMeal,
-                      cover: data.strMealThumb,
-                    })
-                  )
-                }
-              >
+              <button onClick={addHandler}>
                 <i className="ri-add-line"></i>
               </button>
             </div>
