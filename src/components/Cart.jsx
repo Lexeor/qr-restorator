@@ -23,9 +23,11 @@ function Cart({ show, items }) {
         <h2>Your order</h2>
         <section className="cart-items-wrapper">{renderItems}</section>
         <hr />
-        <div className="total-row">
-          <span>Total</span>
-          <strong>${totalPrice}</strong>
+        <div className="totals">
+          <div className="total-row">
+            <span>Total</span>
+            <strong>${totalPrice}</strong>
+          </div>
         </div>
         <button className="btn-primary">Checkout</button>
       </div>

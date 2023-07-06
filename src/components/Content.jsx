@@ -11,8 +11,6 @@ function Content({ toggleSubheader, showDetails }) {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
 
-  console.log(products);
-
   const loadCategories = async () => {
     const dataFetch = async () => {
       const response = await fetch(

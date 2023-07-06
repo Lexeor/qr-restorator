@@ -25,11 +25,14 @@
   }
 }
 
+.totals {
+  margin-bottom: 0.5em;
+}
+
 .total-row {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 0.3em;
   font-size: 1.2em;
 }
 
@@ -37,14 +40,28 @@
   display: flex;
   flex-direction: column;
   gap: 0.5em;
+  width: 100%;
 }
 
 .cart-item {
   display: flex;
   flex-direction: row;
+  flex-grow: 1;
 
   img {
-    width: 100px;
+    width: 80px;
     border-radius: $border-radius-s;
+  }
+
+  .cart-item-body {
+    flex-grow: 1;
+    padding: 0.5em 0 0.5em 0.5em;
+    display: flex;
+    flex-direction: column;
+
+    .card-item-main {
+      margin: 0;
+      margin-bottom: 0.5em;
+    }
   }
 }
