@@ -64,6 +64,7 @@ main {
   bottom: 0;
   overflow: hidden;
   transition: all 0.3s ease-in-out;
+  height: -webkit-fill-available;
 }
 
 .categories-wrapper {
@@ -98,6 +99,7 @@ main {
 // Buttons
 
 button {
+  all: unset;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -145,7 +147,6 @@ button {
 .btn-addRemove {
   display: flex;
   flex-direction: row;
-  gap: 5px;
   border-radius: $border-radius-m;
   align-items: center;
   justify-content: center;
@@ -153,6 +154,8 @@ button {
   color: $text-light;
   background-color: $color-primary;
   height: 35px;
+  padding: 0 0.5em;
+  gap: 5px;
 
   button {
     background-color: transparent;

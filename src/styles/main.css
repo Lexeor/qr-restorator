@@ -121,6 +121,7 @@ main {
   bottom: 0;
   overflow: hidden;
   transition: all 0.3s ease-in-out;
+  height: -webkit-fill-available;
 }
 
 .categories-wrapper {
@@ -179,6 +180,7 @@ main {
 }
 
 button {
+  all: unset;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -222,7 +224,6 @@ button.btn-primary {
 .btn-addRemove {
   display: flex;
   flex-direction: row;
-  gap: 5px;
   border-radius: 20px;
   align-items: center;
   justify-content: center;
@@ -230,6 +231,8 @@ button.btn-primary {
   color: whitesmoke;
   background-color: #e8b225;
   height: 35px;
+  padding: 0 0.5em;
+  gap: 5px;
 }
 .btn-addRemove button {
   background-color: transparent;
