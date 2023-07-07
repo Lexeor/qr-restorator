@@ -11,9 +11,14 @@
     align-items: center;
     justify-content: center;
     background-color: $color-gray;
+    border: 2px solid $color-gray;
     border-radius: $border-radius-s;
     width: 70px;
     height: 70px;
+
+    &.active {
+      border: 2px solid $color-primary;
+    }
   }
 
   img {

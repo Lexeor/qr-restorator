@@ -12,7 +12,11 @@ function Content({ toggleSubheader, showDetails }) {
 
   //Functions
   const handleCategorySelection = (category) => {
-    setCurrentCategory(category);
+    if (category === currentCategory) {
+      setCurrentCategory(null);
+    } else {
+      setCurrentCategory(category);
+    }
   };
 
   // Fetch data
@@ -26,7 +30,7 @@ function Content({ toggleSubheader, showDetails }) {
     await dataFetch();
   };
 
-  const loadPictures = async () => {
+  const loadProducts = async () => {
     const productsArr = [];
 
     const dataFetch = async (item, productsArr) => {
@@ -46,9 +50,12 @@ function Content({ toggleSubheader, showDetails }) {
 
   // Side effects
   useEffect(() => {
-    loadPictures();
     loadCategories();
   }, []);
+
+  useEffect(() => {
+    loadProducts();
+  }, [currentCategory]);
 
   // Render lists
   const renderCards =
@@ -66,7 +73,14 @@ function Content({ toggleSubheader, showDetails }) {
 
   const renderCategories =
     categories && categories.length > 0 ? (
-      categories.map((cat) => <CategoryCard key={cat.idCategory} data={cat} />)
+      categories.map((cat) => (
+        <CategoryCard
+          key={cat.idCategory}
+          data={cat}
+          handleCategorySelection={handleCategorySelection}
+          currentCategory={currentCategory}
+        />
+      ))
     ) : (
       <>Loading...</>
     );

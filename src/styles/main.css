@@ -328,9 +328,13 @@ button.btn-primary {
   align-items: center;
   justify-content: center;
   background-color: #e1e1e1;
+  border: 2px solid #e1e1e1;
   border-radius: 10px;
   width: 70px;
   height: 70px;
+}
+.card-cat .img-wrapper.active {
+  border: 2px solid #e8b225;
 }
 .card-cat img {
   width: 100%;
