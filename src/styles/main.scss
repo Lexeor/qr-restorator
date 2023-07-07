@@ -91,6 +91,11 @@ main {
   // &.product {
   //   min-height: calc(100vh - 110px);
   // }
+
+  &.empty {
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .panel-header {

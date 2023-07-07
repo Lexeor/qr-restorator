@@ -171,6 +171,10 @@ main {
   scrollbar-face-color: #e8b225;
   scrollbar-track-color: #f4d992;
 }
+.content-wrapper.empty {
+  justify-content: center;
+  align-items: center;
+}
 
 .panel-header {
   display: flex;

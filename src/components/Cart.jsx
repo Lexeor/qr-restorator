@@ -17,29 +17,44 @@ function Cart({ show, items }) {
     }, 0)
   );
 
+  const totalQuantity = useSelector((state) => {
+    return state.cart.totalQuantity;
+  });
+
+  // Styles
+  const contentStyle = {
+    height: window.innerHeight - 70,
+  };
+
   const renderItems = items.map((item) => (
     <CartItem key={item.id} item={item} />
   ));
 
   return (
     <div className={containerClass}>
-      <div className="content-wrapper">
-        <div className="panel-header">
-          <h2>Your order</h2>
-          <span className="action-link" onClick={clearHandler}>
-            Remove all
-          </span>
-        </div>
-        <section className="cart-items-wrapper">{renderItems}</section>
-        <hr />
-        <div className="totals">
-          <div className="total-row">
-            <span>Total</span>
-            <strong>${totalPrice}</strong>
+      {totalQuantity ? (
+        <div className="content-wrapper">
+          <div className="panel-header">
+            <h2>Your order</h2>
+            <span className="action-link" onClick={clearHandler}>
+              Remove all
+            </span>
           </div>
+          <section className="cart-items-wrapper">{renderItems}</section>
+          <hr />
+          <div className="totals">
+            <div className="total-row">
+              <span>Total</span>
+              <strong>${totalPrice}</strong>
+            </div>
+          </div>
+          <button className="btn-primary">Checkout</button>
         </div>
-        <button className="btn-primary">Checkout</button>
-      </div>
+      ) : (
+        <div className="content-wrapper empty" style={contentStyle}>
+          Your order is empty.
+        </div>
+      )}
     </div>
   );
 }
