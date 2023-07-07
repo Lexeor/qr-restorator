@@ -11,17 +11,10 @@
   overflow-y: scroll;
 }
 
-.product-dummy {
-  height: calc(35px + 2.5em);
-}
-
 .product-footer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-  position: absolute;
-  bottom: 1em;
   padding: 0 0.5em;
-  left: 0;
 }

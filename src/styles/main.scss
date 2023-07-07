@@ -88,9 +88,11 @@ main {
   width: 100%;
   position: relative;
 
-  // &.product {
-  //   min-height: calc(100vh - 110px);
-  // }
+  &.product {
+    display: grid;
+    grid-template-rows: 200px 1fr 60px;
+    gap: 1em;
+  }
 
   &.empty {
     justify-content: center;

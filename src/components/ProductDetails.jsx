@@ -55,7 +55,6 @@ function ProductDetails({ show, toggleSubheader }) {
           className="product-details-img"
         />
         <section className="product-details">{product.strInstructions}</section>
-        <div className="product-dummy"></div>
         <section className="product-footer">
           <strong>$12</strong>
           {!quantityInCart ? (

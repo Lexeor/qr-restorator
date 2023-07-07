@@ -171,6 +171,11 @@ main {
   scrollbar-face-color: #e8b225;
   scrollbar-track-color: #f4d992;
 }
+.content-wrapper.product {
+  display: grid;
+  grid-template-rows: 200px 1fr 60px;
+  gap: 1em;
+}
 .content-wrapper.empty {
   justify-content: center;
   align-items: center;
@@ -419,17 +424,10 @@ button.btn-primary {
   overflow-y: scroll;
 }
 
-.product-dummy {
-  height: calc(35px + 2.5em);
-}
-
 .product-footer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-  position: absolute;
-  bottom: 1em;
   padding: 0 0.5em;
-  left: 0;
 }/*# sourceMappingURL=main.css.map */
