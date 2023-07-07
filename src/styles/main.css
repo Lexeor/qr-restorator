@@ -171,9 +171,6 @@ main {
   scrollbar-face-color: #e8b225;
   scrollbar-track-color: #f4d992;
 }
-.content-wrapper.product {
-  min-height: calc(100vh - 110px);
-}
 
 .panel-header {
   display: flex;
@@ -419,7 +416,7 @@ button.btn-primary {
 }
 
 .product-dummy {
-  height: calc(35px + 1em);
+  height: calc(35px + 2.5em);
 }
 
 .product-footer {
@@ -429,6 +426,6 @@ button.btn-primary {
   width: 100%;
   position: absolute;
   bottom: 1em;
-  padding: 0.5em 0.5em;
+  padding: 0 0.5em;
   left: 0;
 }/*# sourceMappingURL=main.css.map */

@@ -36,13 +36,13 @@ function ProductDetails({ show, toggleSubheader }) {
     );
   };
 
-  const productDetailsStyle = {
-    height: window.innerHeight - 70 - 40 - 16 - 200 - 35 - 24 - 16,
+  const productPageStyle = {
+    height: window.innerHeight - 70 - 40,
   };
 
   return (
     <div className={containerClass}>
-      <div className="content-wrapper product">
+      <div className="content-wrapper product" style={productPageStyle}>
         <button
           className="btn-panel absolute"
           onClick={() => toggleSubheader()}
@@ -54,9 +54,7 @@ function ProductDetails({ show, toggleSubheader }) {
           alt=""
           className="product-details-img"
         />
-        <section className="product-details" style={productDetailsStyle}>
-          {product.strInstructions}
-        </section>
+        <section className="product-details">{product.strInstructions}</section>
         <div className="product-dummy"></div>
         <section className="product-footer">
           <strong>$12</strong>
