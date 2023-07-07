@@ -4,13 +4,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { clearCart } from "../app/cartSlice";
 
 function Cart({ show, items }) {
-  const containerClass = show ? "panel cart" : "panel cart hidden";
   const dispatch = useDispatch();
 
+  // Functions
   const clearHandler = () => {
     dispatch(clearCart());
   };
 
+  // Redux data handlers
   const totalPrice = useSelector((state) =>
     state.cart.itemsList?.reduce((acc, item) => {
       return acc + item.totalPrice;
@@ -21,11 +22,14 @@ function Cart({ show, items }) {
     return state.cart.totalQuantity;
   });
 
-  // Styles
+  // Styles & Classes
   const contentStyle = {
     height: window.innerHeight - 70,
   };
 
+  const containerClass = show ? "panel cart" : "panel cart hidden";
+
+  // Renders
   const renderItems = items.map((item) => (
     <CartItem key={item.id} item={item} />
   ));
@@ -52,7 +56,7 @@ function Cart({ show, items }) {
         </div>
       ) : (
         <div className="content-wrapper empty" style={contentStyle}>
-          Your order is empty.
+          <h3>Your order is empty.</h3>
         </div>
       )}
     </div>
