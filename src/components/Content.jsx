@@ -8,7 +8,9 @@ const dishes = [52767, 52867, 52793, 53043, 52876];
 function Content({ toggleSubheader, showDetails }) {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [currentCategory, setCurrentCategory] = useState(null);
 
+  // Fetch data
   const loadCategories = async () => {
     const dataFetch = async () => {
       const response = await axios(`/categories.php`);
@@ -37,11 +39,13 @@ function Content({ toggleSubheader, showDetails }) {
     setProducts(productsArr);
   };
 
+  // Side effects
   useEffect(() => {
     loadPictures();
     loadCategories();
   }, []);
 
+  // Render lists
   const renderCards =
     products && products.length > 0 ? (
       products.map((prod) => (
