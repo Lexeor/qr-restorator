@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ProductCard from "./ProductCard";
 import CategoryCard from "./CategoryCard";
+import axios from "../lib/fetch";
 
 const dishes = [52767, 52867, 52793, 53043, 52876];
 
@@ -10,12 +11,9 @@ function Content({ toggleSubheader, showDetails }) {
 
   const loadCategories = async () => {
     const dataFetch = async () => {
-      const response = await fetch(
-        `https://www.themealdb.com/api/json/v1/1/categories.php`
-      );
-      const data = await response.json();
-      // productsArr.push(data.meals[0]);
-      setCategories(data.categories);
+      const response = await axios(`/categories.php`);
+      setCategories(response.data.categories);
+      return response;
     };
 
     await dataFetch();
@@ -25,11 +23,9 @@ function Content({ toggleSubheader, showDetails }) {
     const productsArr = [];
 
     const dataFetch = async (item, productsArr) => {
-      const response = await fetch(
-        `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${item}`
-      );
-      const data = await response.json();
-      productsArr.push(data.meals[0]);
+      const response = await axios(`/lookup.php?i=${item}`);
+      productsArr.push(response.data.meals[0]);
+      return response;
     };
 
     await dataFetch(dishes[0], productsArr);
