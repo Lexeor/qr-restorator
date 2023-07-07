@@ -10,6 +10,11 @@ function Content({ toggleSubheader, showDetails }) {
   const [categories, setCategories] = useState([]);
   const [currentCategory, setCurrentCategory] = useState(null);
 
+  //Functions
+  const handleCategorySelection = (category) => {
+    setCurrentCategory(category);
+  };
+
   // Fetch data
   const loadCategories = async () => {
     const dataFetch = async () => {
