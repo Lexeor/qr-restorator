@@ -228,11 +228,11 @@ button.btn-add {
   font-size: 1.4em;
 }
 button.btn-primary {
-  border-radius: 20px;
+  border-radius: 30px;
   background-color: #e8b225;
   text-transform: uppercase;
   font-weight: 600;
-  height: 35px;
+  height: 45px;
   font-size: 0.9em;
   width: 70%;
 }
@@ -415,7 +415,6 @@ button.btn-primary {
      object-fit: cover;
   height: 200px;
   margin: 0 auto;
-  margin-bottom: 1em;
   border-radius: 25px;
 }
 
@@ -430,4 +429,16 @@ button.btn-primary {
   justify-content: space-between;
   width: 100%;
   padding: 0 0.5em;
+}
+.product-footer .price-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.product-footer .price-container span {
+  color: #4b4b4b;
+  font-weight: 300;
+}
+.product-footer .price-container strong {
+  font-size: 1.4em;
 }/*# sourceMappingURL=main.css.map */

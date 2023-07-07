@@ -2,7 +2,6 @@
   object-fit: cover;
   height: 200px;
   margin: 0 auto;
-  margin-bottom: 1em;
   border-radius: $border-radius-l-inner;
 }
 
@@ -17,4 +16,19 @@
   justify-content: space-between;
   width: 100%;
   padding: 0 0.5em;
+
+  .price-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+    span {
+      color: $text-secondary;
+      font-weight: 300;
+    }
+
+    strong {
+      font-size: 1.4em;
+    }
+  }
 }

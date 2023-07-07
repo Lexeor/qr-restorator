@@ -153,11 +153,11 @@ button {
   }
 
   &.btn-primary {
-    border-radius: $border-radius-m;
+    border-radius: $border-radius-l;
     background-color: $color-primary;
     text-transform: uppercase;
     font-weight: 600;
-    height: 35px;
+    height: 45px;
     font-size: 0.9em;
     width: 70%;
   }
