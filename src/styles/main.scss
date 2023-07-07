@@ -81,7 +81,7 @@ main {
 .content-wrapper {
   overflow-x: hidden;
   overflow-y: scroll;
-  padding: $padding-min;
+  padding: $padding-std $padding-min;
   @include scrollbars(0, $color-primary);
   display: flex;
   flex-direction: column;
@@ -89,7 +89,7 @@ main {
   position: relative;
 
   &.product {
-    padding: $padding-std;
+    min-height: calc(100vh - 110px);
   }
 }
 
@@ -130,8 +130,8 @@ button {
 
     &.absolute {
       position: absolute;
-      top: 10px;
-      right: 10px;
+      top: 0.7em;
+      right: 0.3em;
     }
   }
 

@@ -151,7 +151,7 @@ main {
 .content-wrapper {
   overflow-x: hidden;
   overflow-y: scroll;
-  padding: 0.5em;
+  padding: 1em 0.5em;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -172,7 +172,7 @@ main {
   scrollbar-track-color: #f4d992;
 }
 .content-wrapper.product {
-  padding: 1em;
+  min-height: calc(100vh - 110px);
 }
 
 .panel-header {
@@ -209,8 +209,8 @@ button.btn-panel {
 }
 button.btn-panel.absolute {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 0.7em;
+  right: 0.3em;
 }
 button.btn-add {
   border-radius: 50%;
@@ -350,7 +350,6 @@ button.btn-primary {
 }
 .panel.product {
   min-height: calc(100vh - 110px);
-  padding: 0;
   top: 110px;
 }
 .panel.hidden {
@@ -410,10 +409,26 @@ button.btn-primary {
      object-fit: cover;
   height: 200px;
   margin: 0 auto;
+  margin-bottom: 1em;
+  border-radius: 30px;
+}
+
+.product-details {
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+.product-dummy {
+  height: calc(35px + 1em);
 }
 
 .product-footer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  width: 100%;
+  position: absolute;
+  bottom: 1em;
+  padding: 0.5em 0.5em;
+  left: 0;
 }/*# sourceMappingURL=main.css.map */

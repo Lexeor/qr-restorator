@@ -6,8 +6,6 @@ function ProductDetails({ show, toggleSubheader }) {
   const product = useSelector((state) => state.selected.item);
   const containerClass = show ? "panel product" : "panel product hidden";
 
-  console.log(product);
-
   const dispatch = useDispatch();
   const quantityInCart = useSelector(
     (state) =>
@@ -38,14 +36,28 @@ function ProductDetails({ show, toggleSubheader }) {
     );
   };
 
+  const productDetailsStyle = {
+    height: window.innerHeight - 70 - 40 - 16 - 200 - 35 - 24 - 16,
+  };
+
   return (
     <div className={containerClass}>
-      <button className="btn-panel absolute" onClick={() => toggleSubheader()}>
-        <i className="ri-close-line"></i>
-      </button>
-      <img src={product.strMealThumb} alt="" className="product-details-img" />
       <div className="content-wrapper product">
-        <section className="product-details">{product.strInstructions}</section>
+        <button
+          className="btn-panel absolute"
+          onClick={() => toggleSubheader()}
+        >
+          <i className="ri-close-line"></i>
+        </button>
+        <img
+          src={product.strMealThumb}
+          alt=""
+          className="product-details-img"
+        />
+        <section className="product-details" style={productDetailsStyle}>
+          {product.strInstructions}
+        </section>
+        <div className="product-dummy"></div>
         <section className="product-footer">
           <strong>$12</strong>
           {!quantityInCart ? (

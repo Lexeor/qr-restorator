@@ -2,10 +2,26 @@
   object-fit: cover;
   height: 200px;
   margin: 0 auto;
+  margin-bottom: 1em;
+  border-radius: $border-radius-l;
+}
+
+.product-details {
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+.product-dummy {
+  height: calc(35px + 1em);
 }
 
 .product-footer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  width: 100%;
+  position: absolute;
+  bottom: 1em;
+  padding: 0.5em 0.5em;
+  left: 0;
 }
