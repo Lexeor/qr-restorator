@@ -20,11 +20,12 @@ body {
 }
 
 hr {
-  // all: unset;
   color: $color-primary;
   width: 100%;
-  border-top: 1px solid $color-primary;
+  height: 0;
   margin: 0;
+  border: 0;
+  border-top: 1px solid $color-primary;
 }
 
 // Typographics
@@ -60,7 +61,12 @@ main {
   width: 100%;
   color: $text-dark;
   padding: 0 $padding-min;
-  background-color: $color-background-light;
+  background: rgb(238, 238, 238);
+  background: linear-gradient(
+    0deg,
+    rgba(238, 238, 238, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
   max-height: calc(100vh - 70px);
   position: absolute;
   bottom: 0;
@@ -189,9 +195,10 @@ button {
   height: 35px;
   padding: 0 0.5em;
   gap: 5px;
+  background-color: $color-white;
 
   button {
-    background-color: transparent;
+    background-color: $color-white;
     color: $color-primary;
     border: 0;
     font-size: 1.4rem;

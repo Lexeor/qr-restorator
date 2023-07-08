@@ -2,7 +2,12 @@
   width: 100%;
   color: $text-dark;
   padding: 0 $padding-min;
-  background-color: $color-background-light;
+  background: rgb(238, 238, 238);
+  background: linear-gradient(
+    0deg,
+    rgba(238, 238, 238, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
   border-radius: $border-radius-l $border-radius-l 0 0;
   min-height: calc(100vh - 70px);
   overflow: hidden;

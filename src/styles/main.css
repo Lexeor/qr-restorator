@@ -83,8 +83,10 @@ body {
 hr {
   color: #e8b225;
   width: 100%;
-  border-top: 1px solid #e8b225;
+  height: 0;
   margin: 0;
+  border: 0;
+  border-top: 1px solid #e8b225;
 }
 
 h2 {
@@ -116,7 +118,8 @@ main {
   width: 100%;
   color: rgb(19, 19, 19);
   padding: 0 0.5em;
-  background-color: #eeeeee;
+  background: rgb(238, 238, 238);
+  background: linear-gradient(0deg, rgb(238, 238, 238) 0%, rgb(255, 255, 255) 100%);
   max-height: calc(100vh - 70px);
   position: absolute;
   bottom: 0;
@@ -215,7 +218,7 @@ button.menu {
 }
 button.btn-panel {
   border-radius: 50%;
-  background-color: #e1e1e1;
+  background-color: #eeeeee;
   color: rgb(19, 19, 19);
   width: 40px;
   height: 40px;
@@ -259,9 +262,10 @@ button.w-100 {
   height: 35px;
   padding: 0 0.5em;
   gap: 5px;
+  background-color: #ffffff;
 }
 .btn-addRemove button {
-  background-color: transparent;
+  background-color: #ffffff;
   color: #e8b225;
   border: 0;
   font-size: 1.4rem;
@@ -284,6 +288,7 @@ button.w-100 {
   flex-direction: row;
   background-color: white;
   border-radius: 20px;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.04);
   padding: 0.7em;
   gap: 1em;
 }
@@ -338,8 +343,8 @@ button.w-100 {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #e1e1e1;
-  border: 2px solid #e1e1e1;
+  background-color: #eeeeee;
+  border: 2px solid #eeeeee;
   border-radius: 10px;
   width: 70px;
   height: 70px;
@@ -355,7 +360,8 @@ button.w-100 {
   width: 100%;
   color: rgb(19, 19, 19);
   padding: 0 0.5em;
-  background-color: #eeeeee;
+  background: rgb(238, 238, 238);
+  background: linear-gradient(0deg, rgb(238, 238, 238) 0%, rgb(255, 255, 255) 100%);
   border-radius: 30px 30px 0 0;
   min-height: calc(100vh - 70px);
   overflow: hidden;
