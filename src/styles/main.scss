@@ -58,13 +58,15 @@ main {
   color: $text-dark;
   padding: 0 $padding-min;
   background-color: $color-background-light;
-  border-radius: $border-radius-l $border-radius-l 0 0;
   max-height: calc(100vh - 70px);
   position: absolute;
   bottom: 0;
-  overflow: hidden;
   transition: all 0.3s ease-in-out;
   height: -webkit-fill-available;
+  overflow: hidden;
+  border-radius: $border-radius-l $border-radius-l 0 0;
+  // Safari fix
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 
 .categories-wrapper {

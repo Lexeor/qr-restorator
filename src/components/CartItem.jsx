@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { addToCart, removeFromCart } from "../app/cartSlice";
 
 function CartItem({ item }) {
-  console.log(item);
   const dispatch = useDispatch();
   const quantityInCart = useSelector(
     (state) =>
