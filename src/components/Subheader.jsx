@@ -6,7 +6,7 @@ function Subheader({ show }) {
 
   const subheaderClass = show ? "subheader show" : "subheader";
 
-  return <div className={subheaderClass}>{product ? product.strMeal : ""}</div>;
+  return <div className={subheaderClass}>{product ? product.name : ""}</div>;
 }
 
 export default Subheader;

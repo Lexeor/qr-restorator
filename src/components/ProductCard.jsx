@@ -6,7 +6,7 @@ function ProductCard({ data, toggleSubheader }) {
   const dispatch = useDispatch();
   const quantityInCart = useSelector(
     (state) =>
-      state.cart.itemsList.find((item) => item.id === data.idMeal)?.quantity
+      state.cart.itemsList.find((item) => item.id === data.id)?.quantity
   );
 
   const addHandler = (e) => {
@@ -14,10 +14,10 @@ function ProductCard({ data, toggleSubheader }) {
 
     dispatch(
       addToCart({
-        id: data.idMeal,
-        price: 10,
-        name: data.strMeal,
-        cover: data.strMealThumb,
+        id: data.id,
+        price: data.price,
+        name: data.name,
+        cover: data.cover,
       })
     );
   };
@@ -27,22 +27,22 @@ function ProductCard({ data, toggleSubheader }) {
 
     dispatch(
       removeFromCart({
-        id: data.idMeal,
-        price: 10,
+        id: data.id,
+        price: data.price,
       })
     );
   };
 
   return (
     <article className="product-card" onClick={() => toggleSubheader(data)}>
-      <img src={data.strMealThumb} alt="" loading="lazy" />
+      <img src={data.cover} alt="" loading="lazy" />
       <div className="card-body">
         <div className="card-header">
-          <span className="type-span">{data.strCategory}</span>
+          <span className="type-span">{data.category.name}</span>
         </div>
-        <h3 className="card-main">{data.strMeal}</h3>
+        <h3 className="card-main">{data.name}</h3>
         <div className="card-footer">
-          <span className="card-cost">$12</span>
+          <span className="card-cost">${data.price}</span>
           {!quantityInCart ? (
             <button className="btn-add" onClick={addHandler}>
               <i className="ri-add-line"></i>

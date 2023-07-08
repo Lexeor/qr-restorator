@@ -22,8 +22,8 @@ function Content({ toggleSubheader, showDetails }) {
   // Fetch data
   const loadCategories = async () => {
     const dataFetch = async () => {
-      const response = await axios(`/categories.php`);
-      setCategories(response.data.categories);
+      const response = await axios(`/menu/categories/`);
+      setCategories(response.data);
       return response;
     };
 
@@ -31,21 +31,13 @@ function Content({ toggleSubheader, showDetails }) {
   };
 
   const loadProducts = async () => {
-    const productsArr = [];
-
-    const dataFetch = async (item, productsArr) => {
-      const response = await axios(`/lookup.php?i=${item}`);
-      productsArr.push(response.data.meals[0]);
+    const dataFetch = async () => {
+      const response = await axios(`/menu/`);
+      setProducts(response.data);
       return response;
     };
 
-    await dataFetch(dishes[0], productsArr);
-    await dataFetch(dishes[1], productsArr);
-    await dataFetch(dishes[2], productsArr);
-    await dataFetch(dishes[3], productsArr);
-    await dataFetch(dishes[4], productsArr);
-
-    setProducts(productsArr);
+    await dataFetch();
   };
 
   // Side effects
@@ -62,7 +54,7 @@ function Content({ toggleSubheader, showDetails }) {
     products && products.length > 0 ? (
       products.map((prod) => (
         <ProductCard
-          key={prod.idMeal}
+          key={prod.id}
           data={prod}
           toggleSubheader={toggleSubheader}
         />
@@ -75,7 +67,7 @@ function Content({ toggleSubheader, showDetails }) {
     categories && categories.length > 0 ? (
       categories.map((cat) => (
         <CategoryCard
-          key={cat.idCategory}
+          key={cat.id}
           data={cat}
           handleCategorySelection={handleCategorySelection}
           currentCategory={currentCategory}

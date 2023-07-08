@@ -9,7 +9,7 @@ function ProductDetails({ show, toggleSubheader }) {
   const dispatch = useDispatch();
   const quantityInCart = useSelector(
     (state) =>
-      state.cart.itemsList.find((item) => item.id === product.idMeal)?.quantity
+      state.cart.itemsList.find((item) => item.id === product.id)?.quantity
   );
 
   const addHandler = (e) => {
@@ -17,10 +17,10 @@ function ProductDetails({ show, toggleSubheader }) {
 
     dispatch(
       addToCart({
-        id: product.idMeal,
-        price: 10,
-        name: product.strMeal,
-        cover: product.strMealThumb,
+        id: product.id,
+        price: product.price,
+        name: product.name,
+        cover: product.cover,
       })
     );
   };
@@ -30,7 +30,7 @@ function ProductDetails({ show, toggleSubheader }) {
 
     dispatch(
       removeFromCart({
-        id: product.idMeal,
+        id: product.id,
         price: 10,
       })
     );
@@ -49,16 +49,12 @@ function ProductDetails({ show, toggleSubheader }) {
         >
           <i className="ri-close-line"></i>
         </button>
-        <img
-          src={product.strMealThumb}
-          alt=""
-          className="product-details-img"
-        />
-        <section className="product-details">{product.strInstructions}</section>
+        <img src={product.cover} alt="" className="product-details-img" />
+        <section className="product-details">{product.description}</section>
         <section className="product-footer">
           <div className="price-container">
             <span>Price</span>
-            <strong>$12.00</strong>
+            <strong>${product.price}</strong>
           </div>
           {!quantityInCart ? (
             <button className="btn-primary" onClick={addHandler}>

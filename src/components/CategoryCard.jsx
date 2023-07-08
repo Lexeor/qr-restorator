@@ -1,20 +1,18 @@
 import React from "react";
 
-function CategoryCard(props) {
+function CategoryCard({ data, currentCategory, handleCategorySelection }) {
   const imgClass =
-    props.currentCategory === props.data.strCategory
-      ? "img-wrapper active"
-      : "img-wrapper";
+    currentCategory === data.category ? "img-wrapper active" : "img-wrapper";
 
   return (
     <div
       className="card-cat"
-      onClick={() => props.handleCategorySelection(props.data.strCategory)}
+      onClick={() => handleCategorySelection(data.name)}
     >
       <div className={imgClass}>
-        <img src={props.data.strCategoryThumb} alt="" loading="lazy" />
+        <img src={data.cover} alt="" loading="lazy" />
       </div>
-      <span>{props.data.strCategory}</span>
+      <span>{data.name}</span>
     </div>
   );
 }

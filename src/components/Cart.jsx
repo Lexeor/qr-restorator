@@ -14,7 +14,7 @@ function Cart({ show, items }) {
   // Redux data handlers
   const totalPrice = useSelector((state) =>
     state.cart.itemsList?.reduce((acc, item) => {
-      return acc + item.totalPrice;
+      return acc + Number(item.totalPrice).toFixed(2);
     }, 0)
   );
 
