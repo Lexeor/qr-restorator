@@ -20,14 +20,17 @@ body {
 }
 
 hr {
+  // all: unset;
   color: $color-primary;
   width: 100%;
+  border-top: 1px solid $color-primary;
+  margin: 0;
 }
 
 // Typographics
 
 h2 {
-  margin-top: 0.4em;
+  margin-top: 0;
   margin-bottom: 0.5em;
   font-size: 1.4em;
 }
@@ -93,6 +96,12 @@ main {
   &.product {
     display: grid;
     grid-template-rows: 200px 1fr 60px;
+    gap: 1em;
+  }
+
+  &.cart {
+    display: grid;
+    grid-template-rows: 30px 1fr 2px 1.3em 45px;
     gap: 1em;
   }
 
@@ -163,6 +172,10 @@ button {
     font-size: 0.9em;
     width: 70%;
   }
+
+  &.w-100 {
+    width: 100%;
+  }
 }
 
 .btn-addRemove {
@@ -171,16 +184,15 @@ button {
   border-radius: $border-radius-m;
   align-items: center;
   justify-content: center;
-  border: 0;
-  color: $text-light;
-  background-color: $color-primary;
+  border: 1px solid $color-primary;
+  color: $text-dark;
   height: 35px;
   padding: 0 0.5em;
   gap: 5px;
 
   button {
     background-color: transparent;
-    color: $text-light;
+    color: $color-primary;
     border: 0;
     font-size: 1.4rem;
   }

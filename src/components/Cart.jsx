@@ -27,6 +27,10 @@ function Cart({ show, items }) {
     height: window.innerHeight - 70,
   };
 
+  const cartContentStyle = {
+    maxHeight: window.innerHeight - 70,
+  };
+
   const containerClass = show ? "panel cart" : "panel cart hidden";
 
   // Renders
@@ -37,7 +41,7 @@ function Cart({ show, items }) {
   return (
     <div className={containerClass}>
       {totalQuantity ? (
-        <div className="content-wrapper">
+        <div className="content-wrapper cart" style={cartContentStyle}>
           <div className="panel-header">
             <h2>Your order</h2>
             <span className="action-link" onClick={clearHandler}>
@@ -52,7 +56,7 @@ function Cart({ show, items }) {
               <strong>${totalPrice}</strong>
             </div>
           </div>
-          <button className="btn-primary">Checkout</button>
+          <button className="btn-primary w-100">Checkout</button>
         </div>
       ) : (
         <div className="content-wrapper empty" style={contentStyle}>

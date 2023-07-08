@@ -37,8 +37,11 @@ function CartItem({ item }) {
     <article className="cart-item">
       <img src={item.cover} alt="" />
       <div className="cart-item-body">
-        <h3 className="card-item-main">{item.name}</h3>
-        <div className="total-row">
+        <div className="card-item-main">
+          <span>{item.name}</span>
+          <strong>${item.totalPrice}</strong>
+        </div>
+        <div className="total-column">
           <div className="btn-addRemove">
             <button onClick={removeHandler}>
               <i className="ri-subtract-line"></i>
@@ -48,7 +51,6 @@ function CartItem({ item }) {
               <i className="ri-add-line"></i>
             </button>
           </div>
-          <strong>${item.totalPrice}</strong>
         </div>
       </div>
     </article>

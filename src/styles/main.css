@@ -83,10 +83,12 @@ body {
 hr {
   color: #e8b225;
   width: 100%;
+  border-top: 1px solid #e8b225;
+  margin: 0;
 }
 
 h2 {
-  margin-top: 0.4em;
+  margin-top: 0;
   margin-bottom: 0.5em;
   font-size: 1.4em;
 }
@@ -177,6 +179,11 @@ main {
   grid-template-rows: 200px 1fr 60px;
   gap: 1em;
 }
+.content-wrapper.cart {
+  display: grid;
+  grid-template-rows: 30px 1fr 2px 1.3em 45px;
+  gap: 1em;
+}
 .content-wrapper.empty {
   justify-content: center;
   align-items: center;
@@ -237,6 +244,9 @@ button.btn-primary {
   font-size: 0.9em;
   width: 70%;
 }
+button.w-100 {
+  width: 100%;
+}
 
 .btn-addRemove {
   display: flex;
@@ -244,16 +254,15 @@ button.btn-primary {
   border-radius: 20px;
   align-items: center;
   justify-content: center;
-  border: 0;
-  color: whitesmoke;
-  background-color: #e8b225;
+  border: 1px solid #e8b225;
+  color: rgb(19, 19, 19);
   height: 35px;
   padding: 0 0.5em;
   gap: 5px;
 }
 .btn-addRemove button {
   background-color: transparent;
-  color: whitesmoke;
+  color: #e8b225;
   border: 0;
   font-size: 1.4rem;
 }
@@ -314,6 +323,7 @@ button.btn-primary {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 16px;
 }
 
 .card-cat {
@@ -371,6 +381,13 @@ button.btn-primary {
   margin-bottom: 0.5em;
 }
 
+.total-column {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 .total-row {
   display: flex;
   flex-direction: row;
@@ -379,10 +396,12 @@ button.btn-primary {
 }
 
 .cart-items-wrapper {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0.5em;
+  gap: 1em;
   width: 100%;
+  overflow-y: scroll;
 }
 
 .cart-item {
@@ -398,11 +417,17 @@ button.btn-primary {
   flex-grow: 1;
   padding: 0.5em 0 0.5em 0.5em;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 .cart-item .cart-item-body .card-item-main {
   margin: 0;
-  margin-bottom: 0.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 80%;
+}
+.cart-item .cart-item-body .card-item-main span {
+  font-weight: bolder;
 }
 
 .product-details {
