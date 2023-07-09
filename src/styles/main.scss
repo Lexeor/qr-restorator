@@ -76,6 +76,7 @@ main {
   border-radius: $border-radius-l $border-radius-l 0 0;
   // Safari fix
   -webkit-mask-image: -webkit-radial-gradient(white, black);
+  mask-image: -webkit-radial-gradient(white, black);
 }
 
 .categories-wrapper {
