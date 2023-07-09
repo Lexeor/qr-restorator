@@ -1,4 +1,5 @@
 import React from "react";
+import { serverUrl } from "../data/urls";
 
 function CategoryCard({ data, currentCategory, handleCategorySelection }) {
   const imgClass =
@@ -10,7 +11,7 @@ function CategoryCard({ data, currentCategory, handleCategorySelection }) {
       onClick={() => handleCategorySelection(data.name)}
     >
       <div className={imgClass}>
-        <img src={data.cover} alt="" loading="lazy" />
+        <img src={serverUrl + data.cover} alt="" loading="lazy" />
       </div>
       <span>{data.name}</span>
     </div>

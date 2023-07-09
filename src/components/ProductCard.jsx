@@ -1,6 +1,8 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart, removeFromCart } from "../app/cartSlice";
+import { serverUrl } from "../data/urls";
+import nullImage from "../assets/NullImage.png";
 
 function ProductCard({ data, toggleSubheader }) {
   const dispatch = useDispatch();
@@ -35,7 +37,11 @@ function ProductCard({ data, toggleSubheader }) {
 
   return (
     <article className="product-card" onClick={() => toggleSubheader(data)}>
-      <img src={data.cover} alt="" loading="lazy" />
+      <img
+        src={data.cover ? serverUrl + data.cover : nullImage}
+        alt=""
+        loading="lazy"
+      />
       <div className="card-body">
         <div className="card-header">
           <span className="type-span">{data.category.name}</span>

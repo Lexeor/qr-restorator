@@ -1,6 +1,8 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart, removeFromCart } from "../app/cartSlice";
+import { serverUrl } from "../data/urls";
+import nullImage from "../assets/NullImage.png";
 
 function CartItem({ item }) {
   const dispatch = useDispatch();
@@ -15,7 +17,7 @@ function CartItem({ item }) {
     dispatch(
       addToCart({
         id: item.id,
-        price: 10,
+        price: item.price,
         name: item.name,
         cover: item.cover,
       })
@@ -28,14 +30,14 @@ function CartItem({ item }) {
     dispatch(
       removeFromCart({
         id: item.id,
-        price: 10,
+        price: item.price,
       })
     );
   };
 
   return (
     <article className="cart-item">
-      <img src={item.cover} alt="" />
+      <img src={item.cover ? serverUrl + item.cover : nullImage} alt="" />
       <div className="cart-item-body">
         <div className="card-item-main">
           <span>{item.name}</span>

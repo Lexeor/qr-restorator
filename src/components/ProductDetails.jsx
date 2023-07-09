@@ -1,6 +1,8 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart, removeFromCart } from "../app/cartSlice";
+import { serverUrl } from "../data/urls";
+import nullImage from "../assets/NullImage.png";
 
 function ProductDetails({ show, toggleSubheader }) {
   const product = useSelector((state) => state.selected.item);
@@ -31,7 +33,7 @@ function ProductDetails({ show, toggleSubheader }) {
     dispatch(
       removeFromCart({
         id: product.id,
-        price: 10,
+        price: product.price,
       })
     );
   };
@@ -49,7 +51,11 @@ function ProductDetails({ show, toggleSubheader }) {
         >
           <i className="ri-close-line"></i>
         </button>
-        <img src={product.cover} alt="" className="product-details-img" />
+        <img
+          src={product.cover ? serverUrl + product.cover : nullImage}
+          alt=""
+          className="product-details-img"
+        />
         <section className="product-details">{product.description}</section>
         <section className="product-footer">
           <div className="price-container">
