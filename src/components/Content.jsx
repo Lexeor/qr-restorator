@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ProductCard from "./ProductCard";
 import CategoryCard from "./CategoryCard";
+import CategoriesWrapper from "./CategoriesWrapper";
 import axios from "../lib/fetch";
 
 function Content({ toggleSubheader, showDetails }) {
@@ -123,7 +124,7 @@ function Content({ toggleSubheader, showDetails }) {
     <main style={mainStyle}>
       <div className="content-wrapper" style={contentStyle}>
         <h2>Food Categories</h2>
-        <div className="categories-wrapper">{renderCategories}</div>
+        <CategoriesWrapper>{renderCategories}</CategoriesWrapper>
         <div className="cards-wrapper">{renderCards}</div>
       </div>
     </main>

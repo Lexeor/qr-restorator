@@ -89,18 +89,57 @@ main {
   overflow-x: auto;
   @include scrollbars(0, $color-primary);
   flex-shrink: 0;
-  -webkit-mask-image: -webkit-gradient(
-    linear,
-    left 90%,
-    from(rgba(0, 0, 0, 1)),
-    to(rgba(0, 0, 0, 0))
-  );
-  mask-image: -webkit-gradient(
-    linear,
-    left 90%,
-    from(rgba(0, 0, 0, 1)),
-    to(rgba(0, 0, 0, 0))
-  );
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -2px;
+    height: 100%;
+    width: 5rem;
+    background-image: linear-gradient(
+      to left,
+      rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 0)
+    );
+    transition: all linear 0.3s;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 5rem;
+    background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 0)
+    );
+    transition: all linear 0.3s;
+  }
+
+  &.scrolled-right {
+    &::after {
+      background-image: linear-gradient(
+        to left,
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0)
+      );
+    }
+  }
+
+  &.scrolled-left {
+    &::before {
+      background-image: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0)
+      );
+    }
+  }
 }
 
 .category-wrapper {
