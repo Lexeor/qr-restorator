@@ -2,8 +2,9 @@ import React from "react";
 import { serverUrl } from "../data/urls";
 
 function CategoryCard({ data, currentCategory, handleCategorySelection }) {
+  // Styles & Classes
   const imgClass =
-    currentCategory === data.category ? "img-wrapper active" : "img-wrapper";
+    currentCategory === data.name ? "img-wrapper active" : "img-wrapper";
 
   return (
     <div
