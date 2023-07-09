@@ -45,6 +45,7 @@ h3 {
 body {
   height: 100vh;
   overflow: hidden;
+  background-color: $color-background-dark;
 }
 
 .App {
@@ -89,6 +90,12 @@ main {
   @include scrollbars(0, $color-primary);
   flex-shrink: 0;
   -webkit-mask-image: -webkit-gradient(
+    linear,
+    left 90%,
+    from(rgba(0, 0, 0, 1)),
+    to(rgba(0, 0, 0, 0))
+  );
+  mask-image: -webkit-gradient(
     linear,
     left 90%,
     from(rgba(0, 0, 0, 1)),
