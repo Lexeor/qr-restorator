@@ -3,8 +3,6 @@ import ProductCard from "./ProductCard";
 import CategoryCard from "./CategoryCard";
 import axios from "../lib/fetch";
 
-const dishes = [52767, 52867, 52793, 53043, 52876];
-
 function Content({ toggleSubheader, showDetails }) {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -17,6 +15,24 @@ function Content({ toggleSubheader, showDetails }) {
     } else {
       setCurrentCategory(category);
     }
+  };
+
+  const productsByCats = (arr) => {
+    let result = [];
+    let set = new Set([]);
+
+    arr.forEach((item) => {
+      if (!set.has(item.category.name)) {
+        set.add(item.category.name);
+        result.push({
+          name: item.category.name,
+          items: [{ ...item }],
+        });
+      } else {
+        result[result.length - 1].items.push({ ...item });
+      }
+    });
+    return result;
   };
 
   // Fetch data
@@ -33,6 +49,7 @@ function Content({ toggleSubheader, showDetails }) {
   const loadProducts = async () => {
     const dataFetch = async () => {
       const response = await axios(`/menu/`);
+      console.log(productsByCats(response.data));
       setProducts(response.data);
       return response;
     };
@@ -50,19 +67,6 @@ function Content({ toggleSubheader, showDetails }) {
   }, [currentCategory]);
 
   // Render lists
-  const renderCards =
-    products && products.length > 0 ? (
-      products.map((prod) => (
-        <ProductCard
-          key={prod.id}
-          data={prod}
-          toggleSubheader={toggleSubheader}
-        />
-      ))
-    ) : (
-      <>Loading...</>
-    );
-
   const renderCategories =
     categories && categories.length > 0 ? (
       categories.map((cat) => (
@@ -73,6 +77,28 @@ function Content({ toggleSubheader, showDetails }) {
           currentCategory={currentCategory}
         />
       ))
+    ) : (
+      <>Loading...</>
+    );
+
+  const renderCards =
+    products && products.length > 0 ? (
+      productsByCats(products).map((cat) => {
+        return (
+          <div className="category-wrapper">
+            <h2>{cat.name}</h2>
+            {cat.items.map((prod) => {
+              return (
+                <ProductCard
+                  key={prod.id}
+                  data={prod}
+                  toggleSubheader={toggleSubheader}
+                />
+              );
+            })}
+          </div>
+        );
+      })
     ) : (
       <>Loading...</>
     );
@@ -91,7 +117,6 @@ function Content({ toggleSubheader, showDetails }) {
       <div className="content-wrapper" style={contentStyle}>
         <h2>Food Categories</h2>
         <div className="categories-wrapper">{renderCategories}</div>
-        <h2>Popular</h2>
         <div className="cards-wrapper">{renderCards}</div>
       </div>
     </main>

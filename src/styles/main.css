@@ -139,6 +139,7 @@ main {
   width: 100%;
   overflow-x: auto;
   flex-shrink: 0;
+  -webkit-mask-image: -webkit-gradient(linear, left 90%, from(rgb(0, 0, 0)), to(rgba(0, 0, 0, 0)));
 }
 .categories-wrapper::-webkit-scrollbar {
   width: 0;
@@ -153,6 +154,15 @@ main {
 .categories-wrapper {
   scrollbar-face-color: #e8b225;
   scrollbar-track-color: #f4d992;
+}
+
+.category-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
+}
+.category-wrapper h2 {
+  margin: 0;
 }
 
 .content-wrapper {
@@ -420,6 +430,7 @@ button.w-100 {
 }
 .cart-item img {
   width: 80px;
+  height: 80px;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 10px;

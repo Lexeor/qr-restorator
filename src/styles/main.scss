@@ -88,6 +88,22 @@ main {
   overflow-x: auto;
   @include scrollbars(0, $color-primary);
   flex-shrink: 0;
+  -webkit-mask-image: -webkit-gradient(
+    linear,
+    left 90%,
+    from(rgba(0, 0, 0, 1)),
+    to(rgba(0, 0, 0, 0))
+  );
+}
+
+.category-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
+
+  h2 {
+    margin: 0;
+  }
 }
 
 .content-wrapper {
