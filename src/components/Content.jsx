@@ -17,6 +17,10 @@ function Content({ toggleSubheader, showDetails }) {
     }
   };
 
+  /** Parsing function.
+   *  @input raw products array.
+   *  @returns array filtered by category.
+   */
   const productsByCats = (arr) => {
     let result = [];
     let set = new Set([]);
