@@ -21,6 +21,10 @@ function Content({ toggleSubheader, showDetails }) {
     let result = [];
     let set = new Set([]);
 
+    if (currentCategory) {
+      arr = arr.filter((item) => item.category.name === currentCategory);
+    }
+
     arr.forEach((item) => {
       if (!set.has(item.category.name)) {
         set.add(item.category.name);
@@ -49,7 +53,6 @@ function Content({ toggleSubheader, showDetails }) {
   const loadProducts = async () => {
     const dataFetch = async () => {
       const response = await axios(`/menu/`);
-      console.log(productsByCats(response.data));
       setProducts(response.data);
       return response;
     };
@@ -85,7 +88,7 @@ function Content({ toggleSubheader, showDetails }) {
     products && products.length > 0 ? (
       productsByCats(products).map((cat) => {
         return (
-          <div className="category-wrapper">
+          <div className="category-wrapper" key={cat.name}>
             <h2>{cat.name}</h2>
             {cat.items.map((prod) => {
               return (
