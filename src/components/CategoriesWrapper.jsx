@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 
 function CategoriesWrapper({ children }) {
   const wrapperRef = useRef(null);
@@ -11,14 +11,6 @@ function CategoriesWrapper({ children }) {
     setPositionLeft(el.scrollLeft);
     setScrollWidth(el.scrollWidth);
   };
-
-  // Side effects
-  useEffect(() => {
-    console.log(
-      "width",
-      wrapperRef.current ? wrapperRef.current.offsetWidth : 0
-    );
-  }, []);
 
   //Classes & Styles
   const fadeClass = () => {
