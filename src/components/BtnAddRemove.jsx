@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart, removeFromCart } from "../app/cartSlice";
+import vibrate from "../utils/vibrate";
 
 /**
  * Add/Remove button component
@@ -40,20 +41,6 @@ function BtnAddRemove({ item, mini = true }) {
         price: item.price,
       })
     );
-  };
-
-  const vibrate = () => {
-    // enable vibration support
-    navigator.vibrate =
-      navigator.vibrate ||
-      navigator.webkitVibrate ||
-      navigator.mozVibrate ||
-      navigator.msVibrate;
-
-    if (navigator.vibrate) {
-      // vibration API supported
-      navigator.vibrate(5);
-    }
   };
 
   return !quantityInCart ? (
