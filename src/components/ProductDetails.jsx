@@ -6,15 +6,16 @@ import nullImage from "../assets/NullImage.png";
 import Price from "./Price";
 
 function ProductDetails({ show, toggleSubheader }) {
+  // Redux section
   const product = useSelector((state) => state.selected.item);
-  const containerClass = show ? "panel product" : "panel product hidden";
-
   const dispatch = useDispatch();
+
   const quantityInCart = useSelector(
     (state) =>
       state.cart.itemsList.find((item) => item.id === product.id)?.quantity
   );
 
+  // Functions
   const addHandler = (e) => {
     e.stopPropagation();
 
@@ -39,9 +40,12 @@ function ProductDetails({ show, toggleSubheader }) {
     );
   };
 
+  // Styles & Classes
   const productPageStyle = {
     height: window.innerHeight - 70 - 40,
   };
+
+  const containerClass = show ? "panel product" : "panel product hidden";
 
   return (
     <div className={containerClass}>
