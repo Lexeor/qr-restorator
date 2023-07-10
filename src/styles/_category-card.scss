@@ -1,3 +1,59 @@
+.fade-wrapper {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    right: -2px;
+    height: 100%;
+    width: 3rem;
+    background-image: linear-gradient(
+      to left,
+      rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 0)
+    );
+    transition: all linear 0.3s;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    left: -2px;
+    height: 100%;
+    width: 3rem;
+    background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 0)
+    );
+    transition: all linear 0.3s;
+  }
+
+  &.scrolled-right {
+    &::after {
+      background-image: linear-gradient(
+        to left,
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0)
+      );
+    }
+  }
+
+  &.scrolled-left {
+    &::before {
+      background-image: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0)
+      );
+    }
+  }
+}
+
 .card-cat {
   display: flex;
   flex-direction: column;

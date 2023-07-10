@@ -139,8 +139,8 @@ main {
   gap: 0.5em;
   width: 100%;
   overflow-x: auto;
+  overscroll-behavior: none;
   flex-shrink: 0;
-  position: relative;
 }
 .categories-wrapper::-webkit-scrollbar {
   width: 0;
@@ -155,32 +155,6 @@ main {
 .categories-wrapper {
   scrollbar-face-color: #e8b225;
   scrollbar-track-color: #f4d992;
-}
-.categories-wrapper::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: -2px;
-  height: 100%;
-  width: 5rem;
-  background-image: linear-gradient(to left, rgb(255, 255, 255), rgba(255, 255, 255, 0));
-  transition: all linear 0.3s;
-}
-.categories-wrapper::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 5rem;
-  background-image: linear-gradient(to right, rgb(255, 255, 255), rgba(255, 255, 255, 0));
-  transition: all linear 0.3s;
-}
-.categories-wrapper.scrolled-right::after {
-  background-image: linear-gradient(to left, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
-}
-.categories-wrapper.scrolled-left::before {
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
 }
 
 .category-wrapper {
@@ -369,6 +343,38 @@ button.w-100 {
   justify-content: center;
   align-items: center;
   font-size: 16px;
+}
+
+.fade-wrapper {
+  position: relative;
+}
+.fade-wrapper::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  right: -2px;
+  height: 100%;
+  width: 3rem;
+  background-image: linear-gradient(to left, rgb(255, 255, 255), rgba(255, 255, 255, 0));
+  transition: all linear 0.3s;
+}
+.fade-wrapper::before {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  left: -2px;
+  height: 100%;
+  width: 3rem;
+  background-image: linear-gradient(to right, rgb(255, 255, 255), rgba(255, 255, 255, 0));
+  transition: all linear 0.3s;
+}
+.fade-wrapper.scrolled-right::after {
+  background-image: linear-gradient(to left, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
+}
+.fade-wrapper.scrolled-left::before {
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
 }
 
 .card-cat {

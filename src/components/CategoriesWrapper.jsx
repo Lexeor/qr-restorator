@@ -4,9 +4,6 @@ function CategoriesWrapper({ children }) {
   const wrapperRef = useRef(null);
   const [positionLeft, setPositionLeft] = useState(0);
   const [scrollWidth, setScrollWidth] = useState(0);
-  const [currentWidth, setCurentWidth] = useState();
-  console.log(positionLeft);
-  console.log(scrollWidth);
 
   //Functions
   const handleScroll = () => {
@@ -24,14 +21,30 @@ function CategoriesWrapper({ children }) {
   }, []);
 
   //Classes & Styles
-  const wrapperClass =
-    positionLeft === 0
-      ? "categories-wrapper scrolled-left"
-      : "categories-wrapper";
+  const fadeClass = () => {
+    let result = "fade-wrapper";
+    if (positionLeft === 0) {
+      result += " scrolled-left";
+      return result;
+    }
+    if (
+      wrapperRef &&
+      scrollWidth - positionLeft === wrapperRef.current.offsetWidth
+    ) {
+      result += " scrolled-right";
+    }
+    return result;
+  };
 
   return (
-    <div className={wrapperClass} ref={wrapperRef} onScroll={handleScroll}>
-      {children}
+    <div className={fadeClass()}>
+      <div
+        className="categories-wrapper"
+        ref={wrapperRef}
+        onScroll={handleScroll}
+      >
+        {children}
+      </div>
     </div>
   );
 }
