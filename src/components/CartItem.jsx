@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { addToCart, removeFromCart } from "../app/cartSlice";
 import { serverUrl } from "../data/urls";
 import nullImage from "../assets/NullImage.png";
+import Price from "./Price";
 
 function CartItem({ item }) {
   const dispatch = useDispatch();
@@ -41,7 +42,9 @@ function CartItem({ item }) {
       <div className="cart-item-body">
         <div className="card-item-main">
           <span>{item.name}</span>
-          <strong>${item.totalPrice}</strong>
+          <strong>
+            <Price>{item.totalPrice}</Price>
+          </strong>
         </div>
         <div className="total-column">
           <div className="btn-addRemove">

@@ -1,5 +1,6 @@
 import React from "react";
 import CartItem from "./CartItem";
+import Price from "./Price";
 import { useSelector, useDispatch } from "react-redux";
 import { clearCart } from "../app/cartSlice";
 
@@ -53,7 +54,9 @@ function Cart({ show, items }) {
           <div className="totals">
             <div className="total-row">
               <span>Total</span>
-              <strong>${totalPrice}</strong>
+              <strong>
+                <Price>{totalPrice}</Price>
+              </strong>
             </div>
           </div>
           <button className="btn-primary w-100">Checkout</button>

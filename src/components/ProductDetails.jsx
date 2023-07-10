@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { addToCart, removeFromCart } from "../app/cartSlice";
 import { serverUrl } from "../data/urls";
 import nullImage from "../assets/NullImage.png";
+import Price from "./Price";
 
 function ProductDetails({ show, toggleSubheader }) {
   const product = useSelector((state) => state.selected.item);
@@ -60,7 +61,9 @@ function ProductDetails({ show, toggleSubheader }) {
         <section className="product-footer">
           <div className="price-container">
             <span>Price</span>
-            <strong>${product.price}</strong>
+            <strong>
+              <Price>{product.price}</Price>
+            </strong>
           </div>
           {!quantityInCart ? (
             <button className="btn-primary" onClick={addHandler}>
