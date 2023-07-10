@@ -12,8 +12,23 @@ function ProductCard({ data, toggleSubheader }) {
       state.cart.itemsList.find((item) => item.id === data.id)?.quantity
   );
 
+  const vibrate = () => {
+    // enable vibration support
+    navigator.vibrate =
+      navigator.vibrate ||
+      navigator.webkitVibrate ||
+      navigator.mozVibrate ||
+      navigator.msVibrate;
+
+    if (navigator.vibrate) {
+      // vibration API supported
+      navigator.vibrate(5);
+    }
+  };
+
   const addHandler = (e) => {
     e.stopPropagation();
+    vibrate();
 
     dispatch(
       addToCart({
@@ -27,6 +42,7 @@ function ProductCard({ data, toggleSubheader }) {
 
   const removeHandler = (e) => {
     e.stopPropagation();
+    vibrate();
 
     dispatch(
       removeFromCart({
