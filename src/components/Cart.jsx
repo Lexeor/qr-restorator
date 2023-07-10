@@ -3,12 +3,14 @@ import CartItem from "./CartItem";
 import Price from "./Price";
 import { useSelector, useDispatch } from "react-redux";
 import { clearCart } from "../app/cartSlice";
+import vibrate from "../utils/vibrate";
 
 function Cart({ show, items }) {
   const dispatch = useDispatch();
 
   // Functions
   const clearHandler = () => {
+    vibrate();
     dispatch(clearCart());
   };
 
