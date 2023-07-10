@@ -189,7 +189,7 @@ button {
     font-weight: 600;
     height: 45px;
     font-size: 0.9em;
-    width: 70%;
+    width: 60%;
   }
 
   &.w-100 {
@@ -215,6 +215,20 @@ button {
     color: $color-primary;
     border: 0;
     font-size: 1.4rem;
+  }
+
+  &.large {
+    height: 45px;
+    gap: 10px;
+    border-radius: $border-radius-l;
+
+    .current-qty {
+      font-size: 1.4em;
+    }
+
+    button {
+      font-size: 1.8em;
+    }
   }
 }
 

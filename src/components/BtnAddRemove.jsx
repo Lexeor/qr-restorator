@@ -43,6 +43,9 @@ function BtnAddRemove({ item, mini = true }) {
     );
   };
 
+  // Styles & Classes
+  const buttonAdditiveClass = mini ? "" : " large";
+
   return !quantityInCart ? (
     !mini ? (
       <button className="btn-primary" onClick={addHandler}>
@@ -54,7 +57,7 @@ function BtnAddRemove({ item, mini = true }) {
       </button>
     )
   ) : (
-    <div className="btn-addRemove">
+    <div className={`btn-addRemove${buttonAdditiveClass}`}>
       <button onClick={removeHandler}>
         <i className="ri-subtract-line"></i>
       </button>

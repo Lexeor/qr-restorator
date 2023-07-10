@@ -257,7 +257,7 @@ button.btn-primary {
   font-weight: 600;
   height: 45px;
   font-size: 0.9em;
-  width: 70%;
+  width: 60%;
 }
 button.w-100 {
   width: 100%;
@@ -281,6 +281,17 @@ button.w-100 {
   color: #e8b225;
   border: 0;
   font-size: 1.4rem;
+}
+.btn-addRemove.large {
+  height: 45px;
+  gap: 10px;
+  border-radius: 30px;
+}
+.btn-addRemove.large .current-qty {
+  font-size: 1.4em;
+}
+.btn-addRemove.large button {
+  font-size: 1.8em;
 }
 
 .action-link {
