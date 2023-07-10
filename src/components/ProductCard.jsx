@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { addToCart, removeFromCart } from "../app/cartSlice";
 import { serverUrl } from "../data/urls";
 import nullImage from "../assets/NullImage.png";
+import Price from "./Price";
 
 function ProductCard({ data, toggleSubheader }) {
   const dispatch = useDispatch();
@@ -48,7 +49,9 @@ function ProductCard({ data, toggleSubheader }) {
         </div>
         <h3 className="card-main">{data.name}</h3>
         <div className="card-footer">
-          <span className="card-cost">${data.price}</span>
+          <span className="card-cost">
+            <Price>{data.price}</Price>
+          </span>
           {!quantityInCart ? (
             <button className="btn-add" onClick={addHandler}>
               <i className="ri-add-line"></i>
