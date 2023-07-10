@@ -18,7 +18,7 @@ function ProductCard({ data, toggleSubheader }) {
         </div>
         <h3 className="card-main">{data.name}</h3>
         <div className="card-footer">
-          <span className="card-cost">
+          <span className="card-cost small">
             <Price>{data.price}</Price>
           </span>
           <BtnAddRemove item={data} />

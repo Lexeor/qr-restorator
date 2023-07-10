@@ -329,6 +329,9 @@ button.w-100 {
   font-weight: bold;
   font-size: 1.3em;
 }
+.card-body .card-cost.small {
+  font-size: 1.1em;
+}
 
 .type-span {
   background-color: #f3ecdc;
