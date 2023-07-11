@@ -404,13 +404,14 @@ button.w-100 {
   align-items: center;
   justify-content: center;
   background-color: #eeeeee;
-  border: 2px solid #eeeeee;
+  border: 0;
   border-radius: 10px;
   width: 70px;
   height: 70px;
 }
 .card-cat .img-wrapper.active {
-  border: 2px solid #e8b225;
+  outline: solid 2px #e8b225;
+  outline-offset: -2px;
 }
 .card-cat img {
   width: 100%;
