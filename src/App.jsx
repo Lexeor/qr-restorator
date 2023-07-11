@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NavBar from "./components/NavBar";
 import Content from "./components/Content";
 import Cart from "./components/Cart";
@@ -7,6 +7,7 @@ import Subheader from "./components/Subheader";
 
 import { useSelector, useDispatch } from "react-redux";
 import { set } from "./app/selectedSlice";
+import { fetchCurrency } from "./app/currencySlice";
 
 function App() {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ function App() {
 
   const cartItems = useSelector((state) => state.cart.itemsList);
 
+  // Functions
   function toggleShowCart() {
     setShowCart((prev) => !prev);
   }
@@ -23,6 +25,12 @@ function App() {
     dispatch(set(data));
     setShowDetails((prev) => !prev);
   }
+
+  //Side effects
+  useEffect(() => {
+    dispatch(fetchCurrency());
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <div className="App">

@@ -2,14 +2,14 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 function Price({ children }) {
-  const currency = useSelector((state) => state.currency);
+  const currency = useSelector((state) => state.currency.currency);
 
   // Render component
   const renderPrice = () => {
-    if (currency.position === "left") {
+    if (currency.from_left) {
       return (
         <>
-          {currency.symbol}
+          {currency.sign}
           {currency.separated ? " " : ""}
           {children}
         </>
@@ -19,7 +19,7 @@ function Price({ children }) {
         <>
           {children}
           {currency.separated ? " " : ""}
-          {currency.symbol}
+          {currency.sign}
         </>
       );
     }
