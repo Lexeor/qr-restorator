@@ -8,18 +8,31 @@ export const loadState = () => {
     const serializedState = localStorage.getItem("cart");
     if (serializedState === null) {
       return defaultState;
+    } else {
+      const data = JSON.parse(serializedState);
+      const diff = new Date() - new Date(data.timestamp);
+      // If older than 1 hour - reset cart to default state
+      if (diff < 3.6e6) {
+        return data.state;
+      } else {
+        return defaultState;
+      }
     }
-    return JSON.parse(serializedState);
   } catch (err) {
     return defaultState;
   }
 };
 
 export const saveState = (state) => {
+  const data = {
+    timestamp: new Date(),
+    state: state,
+  };
+
   try {
-    const serializedState = JSON.stringify(state);
+    const serializedState = JSON.stringify(data);
     localStorage.setItem("cart", serializedState);
   } catch {
-    // ignore write errors
+    // Ignore write errors
   }
 };
