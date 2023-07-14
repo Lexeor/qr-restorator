@@ -8,6 +8,7 @@ function Content({ toggleSubheader, showDetails }) {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [currentCategory, setCurrentCategory] = useState(null);
+  const [windowHeight, setWindowHeight] = useState(window.innerHeight);
 
   //Functions
   const handleCategorySelection = (category) => {
@@ -16,6 +17,10 @@ function Content({ toggleSubheader, showDetails }) {
     } else {
       setCurrentCategory(category);
     }
+  };
+
+  const handleHeightChange = () => {
+    setWindowHeight(window.innerHeight);
   };
 
   /** Parsing function.
@@ -73,6 +78,13 @@ function Content({ toggleSubheader, showDetails }) {
   useEffect(() => {
     loadProducts();
   }, [currentCategory]);
+
+  useEffect(() => {
+    window.addEventListener("resize", handleHeightChange);
+    return () => {
+      window.removeEventListener("resize", handleHeightChange);
+    };
+  }, [windowHeight]);
 
   // Render lists
   const renderCategories =
