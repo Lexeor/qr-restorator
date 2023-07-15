@@ -10,6 +10,10 @@ function Content({ toggleSubheader, showDetails }) {
   const [currentCategory, setCurrentCategory] = useState(null);
   const [windowHeight, setWindowHeight] = useState(window.innerHeight);
 
+  const queryParameters = new URLSearchParams(window.location.search);
+  const restId = queryParameters.get("restid");
+  const tableNo = queryParameters.get("table");
+
   //Functions
   const handleCategorySelection = (category) => {
     if (category === currentCategory) {
