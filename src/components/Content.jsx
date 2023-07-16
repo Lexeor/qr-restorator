@@ -3,6 +3,8 @@ import ProductCard from "./ProductCard";
 import CategoryCard from "./CategoryCard";
 import CategoriesWrapper from "./CategoriesWrapper";
 import axios from "../lib/fetch";
+import { useDispatch } from "react-redux";
+import { setTable } from "../app/restaurantSlice";
 
 function Content({ toggleSubheader, showDetails }) {
   const [products, setProducts] = useState([]);
@@ -13,6 +15,7 @@ function Content({ toggleSubheader, showDetails }) {
   const queryParameters = new URLSearchParams(window.location.search);
   const restId = queryParameters.get("restid");
   const tableNo = queryParameters.get("table");
+  const dispatch = useDispatch();
 
   //Functions
   const handleCategorySelection = (category) => {
@@ -74,9 +77,22 @@ function Content({ toggleSubheader, showDetails }) {
     await dataFetch();
   };
 
+  // eslint-disable-next-line
+  const loadRestarauntInfo = async () => {
+    const dataFetch = async () => {
+      const response = await axios(`/restaraunts/${restId}`);
+      setProducts(response.data);
+      return response;
+    };
+
+    await dataFetch();
+  };
+
   // Side effects
   useEffect(() => {
     loadCategories();
+    dispatch(setTable(parseInt(tableNo)));
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {

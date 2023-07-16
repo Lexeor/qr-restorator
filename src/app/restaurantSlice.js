@@ -5,6 +5,7 @@ const initialState = {
   name: "Default name",
   address: "Default address",
   menu: -1,
+  table: -1,
 };
 
 const restaurantSlice = createSlice({
@@ -14,8 +15,11 @@ const restaurantSlice = createSlice({
     set: (state, action) => {
       state = action.payload;
     },
+    setTable: (state, action) => {
+      state.table = action.payload;
+    },
   },
 });
 
 export default restaurantSlice.reducer;
-export const { set } = restaurantSlice.actions;
+export const { set, setTable } = restaurantSlice.actions;
