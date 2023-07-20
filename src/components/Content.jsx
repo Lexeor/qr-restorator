@@ -3,7 +3,7 @@ import ProductCard from "./ProductCard";
 import CategoryCard from "./CategoryCard";
 import CategoriesWrapper from "./CategoriesWrapper";
 import { get } from "../lib/fetch";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { set } from "../app/restaurantSlice";
 
 function Content({ toggleSubheader, showDetails }) {
@@ -18,7 +18,6 @@ function Content({ toggleSubheader, showDetails }) {
 
   //Redux data handlers
   const dispatch = useDispatch();
-  const restaurant = useSelector((state) => state.restaurant);
 
   //Functions
   const handleCategorySelection = (category) => {
@@ -84,19 +83,15 @@ function Content({ toggleSubheader, showDetails }) {
   // eslint-disable-next-line
   const loadRestarauntInfo = async (id, table) => {
     const data = await get(`/restaurants/`);
-    console.log("data fetched!");
     // Find current restaurant and return it's data
     const restData = data.find((item) => item.id === parseInt(id));
-    console.log("restData", JSON.stringify(restData));
-    console.log("now dispatching!");
-
     dispatch(
       set({
         id: parseInt(restData.id),
         name: restData.name,
         address: restData.address,
         menu: parseInt(restData.menu),
-        table: parseInt(table),
+        table: table,
       })
     );
   };

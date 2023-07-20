@@ -20,14 +20,33 @@ function Cart({ show, items }) {
     return state.cart.totalQuantity;
   });
 
+  const restId = useSelector((state) => {
+    return state.restaurant.id;
+  });
+
+  const tableId = useSelector((state) => {
+    return state.restaurant.table;
+  });
+
+  const cartItems = useSelector((state) => {
+    return state.cart.itemsList;
+  });
+
   // Functions
   const clearHandler = () => {
     vibrate();
     dispatch(clearCart());
   };
 
-  const handleSubmit = (data) => {
-    post("/order_create/", data).then((response) => console.log(response));
+  const handleSubmit = async (data, restId, tableId) => {
+    let payload = JSON.stringify({
+      restaurant_id: restId,
+      table_id: tableId,
+      items: data.map((item) => ({ id: item.id, count: item.quantity })),
+    });
+    console.log(payload);
+    const response = await post("/order_create/", payload);
+    console.log(response);
   };
 
   // Styles & Classes
@@ -66,7 +85,12 @@ function Cart({ show, items }) {
               </strong>
             </div>
           </div>
-          <button className="btn-primary w-100">Checkout</button>
+          <button
+            className="btn-primary w-100"
+            onClick={() => handleSubmit(cartItems, restId, tableId)}
+          >
+            Checkout
+          </button>
         </div>
       ) : (
         <div className="content-wrapper empty" style={contentStyle}>

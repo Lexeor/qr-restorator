@@ -5,7 +5,7 @@ const initialState = {
   name: "Default name",
   address: "Default address",
   menu: -1,
-  table: -1,
+  table: "null",
 };
 
 const restaurantSlice = createSlice({
