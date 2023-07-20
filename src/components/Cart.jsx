@@ -4,15 +4,10 @@ import Price from "./Price";
 import { useSelector, useDispatch } from "react-redux";
 import { clearCart } from "../app/cartSlice";
 import vibrate from "../utils/vibrate";
+import { post } from "../lib/fetch";
 
 function Cart({ show, items }) {
   const dispatch = useDispatch();
-
-  // Functions
-  const clearHandler = () => {
-    vibrate();
-    dispatch(clearCart());
-  };
 
   // Redux data handlers
   const totalPrice = useSelector((state) =>
@@ -24,6 +19,16 @@ function Cart({ show, items }) {
   const totalQuantity = useSelector((state) => {
     return state.cart.totalQuantity;
   });
+
+  // Functions
+  const clearHandler = () => {
+    vibrate();
+    dispatch(clearCart());
+  };
+
+  const handleSubmit = (data) => {
+    post("/order_create/", data).then((response) => console.log(response));
+  };
 
   // Styles & Classes
   const contentStyle = {

@@ -13,10 +13,12 @@ const restaurantSlice = createSlice({
   initialState,
   reducers: {
     set: (state, action) => {
-      state = action.payload;
-    },
-    setTable: (state, action) => {
-      state.table = action.payload;
+      let { id, name, address, menu, table } = action.payload;
+      state.id = id;
+      state.name = name;
+      state.address = address;
+      state.menu = menu;
+      state.table = table;
     },
   },
 });

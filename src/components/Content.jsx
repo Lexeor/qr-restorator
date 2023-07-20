@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import ProductCard from "./ProductCard";
 import CategoryCard from "./CategoryCard";
 import CategoriesWrapper from "./CategoriesWrapper";
-import axios from "../lib/fetch";
-import { useDispatch } from "react-redux";
-import { setTable } from "../app/restaurantSlice";
+import { get } from "../lib/fetch";
+import { useSelector, useDispatch } from "react-redux";
+import { set } from "../app/restaurantSlice";
 
 function Content({ toggleSubheader, showDetails }) {
   const [products, setProducts] = useState([]);
@@ -15,7 +15,10 @@ function Content({ toggleSubheader, showDetails }) {
   const queryParameters = new URLSearchParams(window.location.search);
   const restId = queryParameters.get("restid");
   const tableNo = queryParameters.get("table");
+
+  //Redux data handlers
   const dispatch = useDispatch();
+  const restaurant = useSelector((state) => state.restaurant);
 
   //Functions
   const handleCategorySelection = (category) => {
@@ -59,9 +62,9 @@ function Content({ toggleSubheader, showDetails }) {
   // Fetch data
   const loadCategories = async () => {
     const dataFetch = async () => {
-      const response = await axios(`/menu/categories/`);
-      setCategories(response.data);
-      return response;
+      const data = await get(`/menu/categories/`);
+      setCategories(data);
+      return data;
     };
 
     await dataFetch();
@@ -69,29 +72,39 @@ function Content({ toggleSubheader, showDetails }) {
 
   const loadProducts = async () => {
     const dataFetch = async () => {
-      const response = await axios(`/menu/`);
-      setProducts(response.data);
-      return response;
+      const params = { menu_id: 19 };
+      const data = await get(`/menu/detail/`, params);
+      setProducts(data);
+      return data;
     };
 
     await dataFetch();
   };
 
   // eslint-disable-next-line
-  const loadRestarauntInfo = async () => {
-    const dataFetch = async () => {
-      const response = await axios(`/restaraunts/${restId}`);
-      setProducts(response.data);
-      return response;
-    };
+  const loadRestarauntInfo = async (id, table) => {
+    const data = await get(`/restaurants/`);
+    console.log("data fetched!");
+    // Find current restaurant and return it's data
+    const restData = data.find((item) => item.id === parseInt(id));
+    console.log("restData", JSON.stringify(restData));
+    console.log("now dispatching!");
 
-    await dataFetch();
+    dispatch(
+      set({
+        id: parseInt(restData.id),
+        name: restData.name,
+        address: restData.address,
+        menu: parseInt(restData.menu),
+        table: parseInt(table),
+      })
+    );
   };
 
   // Side effects
   useEffect(() => {
     loadCategories();
-    dispatch(setTable(parseInt(tableNo)));
+    loadRestarauntInfo(restId, tableNo);
     // eslint-disable-next-line
   }, []);
 
