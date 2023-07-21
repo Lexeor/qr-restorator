@@ -81,7 +81,7 @@ function Content({ toggleSubheader, showDetails }) {
   };
 
   // eslint-disable-next-line
-  const loadRestarauntInfo = async (id, table) => {
+  const loadRestaurantInfo = async (id, table) => {
     const data = await get(`/restaurants/`);
     // Find current restaurant and return it's data
     const restData = data.find((item) => item.id === parseInt(id));
@@ -99,7 +99,7 @@ function Content({ toggleSubheader, showDetails }) {
   // Side effects
   useEffect(() => {
     loadCategories();
-    loadRestarauntInfo(restId, tableNo);
+    loadRestaurantInfo(restId, tableNo);
     // eslint-disable-next-line
   }, []);
 
