@@ -39,14 +39,14 @@ function Cart({ show, items }) {
   };
 
   const handleSubmit = async (data, restId, tableId) => {
-    let payload = JSON.stringify({
+    let payload = {
       restaurant_id: restId,
       table_id: tableId,
       items: data.map((item) => ({ id: item.id, count: item.quantity })),
-    });
-    console.log(payload);
+    };
     const response = await post("/order_create/", payload);
-    console.log(response);
+    // do something with response
+    console.log(response.data);
   };
 
   // Styles & Classes
