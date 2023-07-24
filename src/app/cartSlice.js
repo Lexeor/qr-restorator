@@ -22,7 +22,7 @@ const cartSlice = createSlice({
           totalPrice: Number(newItem.price),
           quantity: 1,
           name: newItem.name,
-          cover: newItem.cover,
+          image: newItem.image,
         });
       }
       state.totalQuantity++;

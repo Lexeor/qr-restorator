@@ -7,7 +7,7 @@ import BtnAddRemove from "./BtnAddRemove";
 function CartItem({ item }) {
   return (
     <article className="cart-item">
-      <img src={item.cover ? serverUrl + item.cover : nullImage} alt="" />
+      <img src={item.image ? serverUrl + item.image : nullImage} alt="" />
       <div className="cart-item-body">
         <div className="card-item-main">
           <span>{item.name}</span>

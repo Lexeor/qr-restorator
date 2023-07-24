@@ -26,7 +26,7 @@ function BtnAddRemove({ item, mini = true }) {
         id: item.id,
         price: item.price,
         name: item.name,
-        cover: item.cover,
+        image: item.image,
       })
     );
   };
