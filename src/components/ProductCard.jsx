@@ -8,7 +8,7 @@ function ProductCard({ data, toggleSubheader }) {
   return (
     <article className="product-card" onClick={() => toggleSubheader(data)}>
       <img
-        src={data.cover ? serverUrl + data.cover : nullImage}
+        src={data.image ? serverUrl + data.image : nullImage}
         alt=""
         loading="lazy"
       />

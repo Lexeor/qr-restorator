@@ -71,7 +71,7 @@ function Content({ toggleSubheader, showDetails }) {
 
   const loadProducts = async () => {
     const dataFetch = async () => {
-      const params = { menu_id: 19 };
+      const params = { menu_id: 1 };
       const data = await get(`/menu/detail/`, params);
       setProducts(data);
       return data;
@@ -130,8 +130,8 @@ function Content({ toggleSubheader, showDetails }) {
     );
 
   const renderCards =
-    products && products.length > 0 ? (
-      productsByCats(products).map((cat) => {
+    products && products.items && products.items.length > 0 ? (
+      productsByCats(products.items).map((cat) => {
         return (
           <div className="category-wrapper" key={cat.name}>
             <h2>{cat.name}</h2>

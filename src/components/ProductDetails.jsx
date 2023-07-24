@@ -26,7 +26,7 @@ function ProductDetails({ show, toggleSubheader }) {
           <i className="ri-close-line"></i>
         </button>
         <img
-          src={product.cover ? serverUrl + product.cover : nullImage}
+          src={product.image ? serverUrl + product.image : nullImage}
           alt=""
           className="product-details-img"
         />

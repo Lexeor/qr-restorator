@@ -317,6 +317,7 @@ button.w-100 {
 }
 .product-card img {
   width: 100px;
+  height: 100px;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 15px;
@@ -361,6 +362,7 @@ button.w-100 {
 
 .fade-wrapper {
   position: relative;
+  margin-bottom: 1em;
 }
 .fade-wrapper::after {
   content: "";
