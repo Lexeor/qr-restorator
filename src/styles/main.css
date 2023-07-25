@@ -313,11 +313,12 @@ button.w-100 {
   border-radius: 20px;
   box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.04);
   padding: 0.7em;
-  gap: 1em;
+  gap: 0.7em;
 }
 .product-card img {
-  width: 100px;
-  height: 100px;
+  min-width: 100px;
+  max-width: 100px;
+  height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 15px;
