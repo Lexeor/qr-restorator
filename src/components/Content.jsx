@@ -3,8 +3,9 @@ import ProductCard from "./ProductCard";
 import CategoryCard from "./CategoryCard";
 import CategoriesWrapper from "./CategoriesWrapper";
 import { get } from "../lib/fetch";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { set } from "../app/restaurantSlice";
+import { set as setCurrency } from "../app/currencySlice";
 
 function Content({ toggleSubheader, showDetails }) {
   const [products, setProducts] = useState([]);
@@ -19,6 +20,8 @@ function Content({ toggleSubheader, showDetails }) {
 
   //Redux data handlers
   const dispatch = useDispatch();
+
+  const currency = useSelector((state) => state.currency);
 
   //Functions
   const handleCategorySelection = (category) => {
@@ -73,10 +76,13 @@ function Content({ toggleSubheader, showDetails }) {
   const loadProducts = async (menuId) => {
     const dataFetch = async (menuId) => {
       const params = { menu_id: menuId };
-      const data = await get(`/menu/detail/`, params);
-      console.log("menu", data);
-      setProducts(data);
-      return data;
+      const menuData = await get(`/menu/detail/`, params);
+      // Set currency if it's still null
+      if (!currency.char_code && menuData) {
+        dispatch(setCurrency(menuData.currency));
+      }
+      setProducts(menuData);
+      return menuData;
     };
 
     await dataFetch(menuId);
@@ -116,7 +122,10 @@ function Content({ toggleSubheader, showDetails }) {
   }, []);
 
   useEffect(() => {
-    loadProducts(currentMenu);
+    if (currentMenu) {
+      loadProducts(currentMenu);
+    }
+    // eslint-disable-next-line
   }, [currentCategory]);
 
   useEffect(() => {

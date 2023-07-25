@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 function Price({ children }) {
-  const currency = useSelector((state) => state.currency.currency);
+  const currency = useSelector((state) => state.currency);
 
   // Render component
   const renderPrice = () => {
