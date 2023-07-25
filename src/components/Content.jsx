@@ -10,6 +10,7 @@ function Content({ toggleSubheader, showDetails }) {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [currentCategory, setCurrentCategory] = useState(null);
+  const [currentMenu, setCurrentMenu] = useState(null);
   const [windowHeight, setWindowHeight] = useState(window.innerHeight);
 
   const queryParameters = new URLSearchParams(window.location.search);
@@ -69,31 +70,42 @@ function Content({ toggleSubheader, showDetails }) {
     await dataFetch();
   };
 
-  const loadProducts = async () => {
-    const dataFetch = async () => {
-      const params = { menu_id: 1 };
+  const loadProducts = async (menuId) => {
+    const dataFetch = async (menuId) => {
+      const params = { menu_id: menuId };
       const data = await get(`/menu/detail/`, params);
+      console.log("menu", data);
       setProducts(data);
       return data;
     };
 
-    await dataFetch();
+    await dataFetch(menuId);
   };
 
   // eslint-disable-next-line
   const loadRestaurantInfo = async (id, table) => {
     const data = await get(`/restaurants/`);
     // Find current restaurant and return it's data
-    const restData = data.find((item) => item.id === parseInt(id));
-    dispatch(
-      set({
-        id: parseInt(restData.id),
-        name: restData.name,
-        address: restData.address,
-        menu: parseInt(restData.menu),
-        table: table,
-      })
-    );
+    if (data) {
+      const restData = data.find((item) => item.id === parseInt(id));
+
+      dispatch(
+        set({
+          id: parseInt(restData.id),
+          name: restData.name,
+          address: restData.address,
+          menu: parseInt(restData.menu),
+          table: table,
+        })
+      );
+
+      // Get current menu
+      loadProducts(restData.menu);
+      // And save it to state
+      setCurrentMenu(restData.menu);
+    } else {
+      console.log("Fetching error.");
+    }
   };
 
   // Side effects
@@ -104,7 +116,7 @@ function Content({ toggleSubheader, showDetails }) {
   }, []);
 
   useEffect(() => {
-    loadProducts();
+    loadProducts(currentMenu);
   }, [currentCategory]);
 
   useEffect(() => {
