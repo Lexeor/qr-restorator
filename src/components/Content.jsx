@@ -133,13 +133,13 @@ function Content({ toggleSubheader, showDetails }) {
   const renderCategories =
     categories && categories.length > 0 ? (
       categories.map((cat) => (
-      <CategoryCard
+        <CategoryCard
           key={cat.id}
           data={cat}
           handleCategorySelection={handleCategorySelection}
           currentCategory={currentCategory}
         />
-        ))
+      ))
     ) : (
       <>Loading...</>
     );
