@@ -6,6 +6,7 @@ import { get } from "../lib/fetch";
 import { useSelector, useDispatch } from "react-redux";
 import { set } from "../app/restaurantSlice";
 import { set as setCurrency } from "../app/currencySlice";
+import { set as setMenu } from "../app/menuSlice";
 
 function Content({ toggleSubheader, showDetails }) {
   const [products, setProducts] = useState([]);
@@ -77,6 +78,7 @@ function Content({ toggleSubheader, showDetails }) {
       const categories = Object.values(menuData.categories);
       setCategories(categories);
 
+      dispatch(setMenu(menuData.items));
       setProducts(menuData);
       return menuData;
     };
