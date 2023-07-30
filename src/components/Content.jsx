@@ -9,7 +9,7 @@ import { set as setCurrency } from "../app/currencySlice";
 import { set as setMenu } from "../app/menuSlice";
 
 function Content({ toggleSubheader, showDetails }) {
-  const [products, setProducts] = useState([]);
+  const products = useSelector((state) => state.menu);
   const [categories, setCategories] = useState([]);
   const [currentCategory, setCurrentCategory] = useState(null);
   const [currentMenu, setCurrentMenu] = useState(null);
@@ -79,7 +79,7 @@ function Content({ toggleSubheader, showDetails }) {
       setCategories(categories);
 
       dispatch(setMenu(menuData.items));
-      setProducts(menuData);
+      //setProducts(menuData);
       return menuData;
     };
 
@@ -118,9 +118,6 @@ function Content({ toggleSubheader, showDetails }) {
   }, []);
 
   useEffect(() => {
-    if (currentMenu) {
-      loadProducts(currentMenu);
-    }
     // eslint-disable-next-line
   }, [currentCategory]);
 
@@ -147,7 +144,10 @@ function Content({ toggleSubheader, showDetails }) {
     );
 
   const renderCards =
-    products && products.items && products.items.length > 0 ? (
+    products &&
+    products.items &&
+    products.items.length > 0 &&
+    categories.length > 0 ? (
       productsByCats(products.items).map((cat) => {
         return (
           <div className="category-wrapper" key={cat.id}>
