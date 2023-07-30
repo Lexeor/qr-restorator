@@ -14,7 +14,7 @@ function ProductCard({ data, toggleSubheader }) {
       />
       <div className="card-body">
         <div className="card-header">
-          <span className="type-span">{data.category.name}</span>
+          <span className="type-span">{data.category}</span>
         </div>
         <h3 className="card-main">{data.name}</h3>
         <div className="card-footer">

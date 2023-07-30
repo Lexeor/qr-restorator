@@ -12,7 +12,6 @@ function Content({ toggleSubheader, showDetails }) {
   const products = useSelector((state) => state.menu);
   const [categories, setCategories] = useState([]);
   const [currentCategory, setCurrentCategory] = useState(null);
-  const [currentMenu, setCurrentMenu] = useState(null);
   const [windowHeight, setWindowHeight] = useState(window.innerHeight);
 
   const queryParameters = new URLSearchParams(window.location.search);
@@ -42,7 +41,7 @@ function Content({ toggleSubheader, showDetails }) {
    *  @returns array filtered by category.
    */
   const productsByCats = (arr) => {
-    let result = [];
+    let products = [];
     let set = new Set([]);
 
     if (currentCategory) {
@@ -51,41 +50,24 @@ function Content({ toggleSubheader, showDetails }) {
 
     arr.forEach((item) => {
       const category = categories.find((cat) => cat.id === item.category);
-      if (!set.has(item.category)) {
-        set.add(category.name);
-        result.push({
-          name: category.name,
-          items: [{ ...item }],
-        });
-      } else {
-        result[result.length - 1].items.push({ ...item });
+
+      if (category) {
+        if (!set.has(item.category)) {
+          set.add(category.name);
+          products.push({
+            name: category.name,
+            items: [{ ...item }],
+          });
+        } else {
+          products[products.length - 1].items.push({ ...item });
+        }
       }
     });
 
-    return result;
+    return products;
   };
 
   // Fetch data
-  const loadProducts = async (menuId) => {
-    const dataFetch = async (menuId) => {
-      const menuData = await get(`/client/menus/${menuId}`);
-      // Set currency if it's still null
-      if (!currency.char_code && menuData) {
-        dispatch(setCurrency(menuData.currency));
-      }
-
-      // Set categories
-      const categories = Object.values(menuData.categories);
-      setCategories(categories);
-
-      dispatch(setMenu(menuData.items));
-      //setProducts(menuData);
-      return menuData;
-    };
-
-    await dataFetch(menuId);
-  };
-
   // eslint-disable-next-line
   const loadRestaurantInfo = async (id, table) => {
     const restaurant = await get(`/client/restaurants/${id}`);
@@ -101,22 +83,39 @@ function Content({ toggleSubheader, showDetails }) {
         })
       );
 
-      // Get current menu
-      loadProducts(restaurant.menu);
-      // And save it to state
-      setCurrentMenu(restaurant.menu);
+      // Load current menu
+      await loadProducts(restaurant.menu);
     } else {
       console.log("Fetching error.");
     }
   };
 
+  const loadProducts = async (menuId) => {
+    const dataFetch = async (menuId) => {
+      const menuData = await get(`/client/menus/${menuId}`);
+      // Set currency if it's still null
+      if (!currency.char_code && menuData) {
+        dispatch(setCurrency(menuData.currency));
+      }
+
+      // Set categories
+      const categories = Object.values(menuData.categories);
+      setCategories(categories);
+
+      dispatch(setMenu(menuData.items));
+      return menuData;
+    };
+
+    await dataFetch(menuId);
+  };
+
   // Side effects
   useEffect(() => {
-    // loadCategories();
     loadRestaurantInfo(restId, tableNo);
     // eslint-disable-next-line
   }, []);
 
+  // Rerender component if currentCategory changes
   useEffect(() => {
     // eslint-disable-next-line
   }, [currentCategory]);
@@ -130,7 +129,7 @@ function Content({ toggleSubheader, showDetails }) {
 
   // Render lists
   const renderCategories =
-    categories && categories.length > 0 ? (
+    categories?.length > 0 ? (
       categories.map((cat) => (
         <CategoryCard
           key={cat.id}
@@ -144,23 +143,21 @@ function Content({ toggleSubheader, showDetails }) {
     );
 
   const renderCards =
-    products &&
-    products.items &&
-    products.items.length > 0 &&
-    categories.length > 0 ? (
+    products?.items?.length > 0 && categories?.length > 0 ? (
       productsByCats(products.items).map((cat) => {
         return (
-          <div className="category-wrapper" key={cat.id}>
+          <div key={cat.name} className="category-wrapper">
             <h2>{cat.name}</h2>
-            {cat.items.map((prod) => {
-              return (
-                <ProductCard
-                  key={prod.id}
-                  data={prod}
-                  toggleSubheader={toggleSubheader}
-                />
-              );
-            })}
+            {cat.items &&
+              cat.items.map((prod) => {
+                return (
+                  <ProductCard
+                    key={prod.id}
+                    data={prod}
+                    toggleSubheader={toggleSubheader}
+                  />
+                );
+              })}
           </div>
         );
       })
