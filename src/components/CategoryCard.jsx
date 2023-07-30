@@ -12,7 +12,7 @@ function CategoryCard({ data, currentCategory, handleCategorySelection }) {
       onClick={() => handleCategorySelection(data.name)}
     >
       <div className={imgClass}>
-        <img src={serverUrl + data.cover} alt="" loading="lazy" />
+        <img src={serverUrl + data.image} alt="" loading="lazy" />
       </div>
       <span>{data.name}</span>
     </div>

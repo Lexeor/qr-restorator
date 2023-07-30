@@ -63,24 +63,20 @@ function Content({ toggleSubheader, showDetails }) {
   };
 
   // Fetch data
-  const loadCategories = async () => {
-    const dataFetch = async () => {
-      const data = await get(`/menu/categories/`);
-      setCategories(data);
-      return data;
-    };
-
-    await dataFetch();
-  };
-
   const loadProducts = async (menuId) => {
     const dataFetch = async (menuId) => {
-      const params = { menu_id: menuId };
-      const menuData = await get(`/menu/detail/`, params);
+      const menuData = await get(`/client/menus/${menuId}`);
+      console.log(menuData);
       // Set currency if it's still null
       if (!currency.char_code && menuData) {
         dispatch(setCurrency(menuData.currency));
       }
+
+      // Set categories
+      const categories = Object.values(menuData.categories);
+      setCategories(categories);
+      console.log(categories);
+
       setProducts(menuData);
       return menuData;
     };
@@ -90,25 +86,23 @@ function Content({ toggleSubheader, showDetails }) {
 
   // eslint-disable-next-line
   const loadRestaurantInfo = async (id, table) => {
-    const data = await get(`/restaurants/`);
+    const restaurant = await get(`/client/restaurants/${id}`);
     // Find current restaurant and return it's data
-    if (data) {
-      const restData = data.find((item) => item.id === parseInt(id));
-
+    if (restaurant) {
       dispatch(
         set({
-          id: parseInt(restData.id),
-          name: restData.name,
-          address: restData.address,
-          menu: parseInt(restData.menu),
+          id: parseInt(restaurant.id),
+          name: restaurant.name,
+          address: restaurant.address,
+          menu: parseInt(restaurant.menu),
           table: table,
         })
       );
 
       // Get current menu
-      loadProducts(restData.menu);
+      loadProducts(restaurant.menu);
       // And save it to state
-      setCurrentMenu(restData.menu);
+      setCurrentMenu(restaurant.menu);
     } else {
       console.log("Fetching error.");
     }
@@ -116,7 +110,7 @@ function Content({ toggleSubheader, showDetails }) {
 
   // Side effects
   useEffect(() => {
-    loadCategories();
+    // loadCategories();
     loadRestaurantInfo(restId, tableNo);
     // eslint-disable-next-line
   }, []);
@@ -139,13 +133,13 @@ function Content({ toggleSubheader, showDetails }) {
   const renderCategories =
     categories && categories.length > 0 ? (
       categories.map((cat) => (
-        <CategoryCard
+      <CategoryCard
           key={cat.id}
           data={cat}
           handleCategorySelection={handleCategorySelection}
           currentCategory={currentCategory}
         />
-      ))
+        ))
     ) : (
       <>Loading...</>
     );
@@ -154,7 +148,7 @@ function Content({ toggleSubheader, showDetails }) {
     products && products.items && products.items.length > 0 ? (
       productsByCats(products.items).map((cat) => {
         return (
-          <div className="category-wrapper" key={cat.name}>
+          <div className="category-wrapper" key={cat.id}>
             <h2>{cat.name}</h2>
             {cat.items.map((prod) => {
               return (
