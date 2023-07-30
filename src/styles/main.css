@@ -403,6 +403,7 @@ button.w-100 {
   font-weight: bolder;
 }
 .card-cat .img-wrapper {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -412,9 +413,15 @@ button.w-100 {
   width: 70px;
   height: 70px;
 }
-.card-cat .img-wrapper.active {
-  outline: solid 2px #e8b225;
-  outline-offset: -2px;
+.card-cat .img-wrapper.active::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border: 2px solid #e8b225;
+  border-radius: 10px;
 }
 .card-cat img {
   width: 100%;
