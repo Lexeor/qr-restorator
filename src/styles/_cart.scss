@@ -77,6 +77,10 @@
     display: flex;
     flex-direction: row;
 
+    .btn-add-remove {
+      align-self: center;
+    }
+
     .card-item-main {
       margin: 0;
       display: flex;

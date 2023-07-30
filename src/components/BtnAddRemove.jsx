@@ -57,7 +57,7 @@ function BtnAddRemove({ item, mini = true }) {
       </button>
     )
   ) : (
-    <div className={`btn-addRemove${buttonAdditiveClass}`}>
+    <div className={`btn-add-remove${buttonAdditiveClass}`}>
       <button onClick={removeHandler}>
         <i className="ri-subtract-line"></i>
       </button>

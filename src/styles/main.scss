@@ -20,12 +20,11 @@ body {
 }
 
 hr {
-  color: $color-primary;
   width: 100%;
   height: 0;
   margin: 0;
   border: 0;
-  border-top: 1px solid $color-primary;
+  border-top: 1px solid rgba($text-secondary, 0.5);
 }
 
 // Typographics
@@ -197,7 +196,7 @@ button {
   }
 }
 
-.btn-addRemove {
+.btn-add-remove {
   display: flex;
   flex-direction: row;
   border-radius: $border-radius-m;
