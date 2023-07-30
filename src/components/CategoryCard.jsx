@@ -4,13 +4,10 @@ import { serverUrl } from "../data/urls";
 function CategoryCard({ data, currentCategory, handleCategorySelection }) {
   // Styles & Classes
   const imgClass =
-    currentCategory === data.name ? "img-wrapper active" : "img-wrapper";
+    currentCategory === data.id ? "img-wrapper active" : "img-wrapper";
 
   return (
-    <div
-      className="card-cat"
-      onClick={() => handleCategorySelection(data.name)}
-    >
+    <div className="card-cat" onClick={() => handleCategorySelection(data.id)}>
       <div className={imgClass}>
         <img src={serverUrl + data.image} alt="" loading="lazy" />
       </div>

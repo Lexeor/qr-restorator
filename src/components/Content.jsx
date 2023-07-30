@@ -44,16 +44,12 @@ function Content({ toggleSubheader, showDetails }) {
     let result = [];
     let set = new Set([]);
 
-    console.log(arr);
-    console.log("categories", categories);
-
     if (currentCategory) {
-      arr = arr.filter((item) => item.category === currentCategory.id);
+      arr = arr.filter((item) => item.category === currentCategory);
     }
 
     arr.forEach((item) => {
       const category = categories.find((cat) => cat.id === item.category);
-      console.log(category);
       if (!set.has(item.category)) {
         set.add(category.name);
         result.push({
@@ -64,7 +60,7 @@ function Content({ toggleSubheader, showDetails }) {
         result[result.length - 1].items.push({ ...item });
       }
     });
-    console.log("result", result);
+
     return result;
   };
 
