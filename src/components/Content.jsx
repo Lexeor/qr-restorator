@@ -44,21 +44,27 @@ function Content({ toggleSubheader, showDetails }) {
     let result = [];
     let set = new Set([]);
 
+    console.log(arr);
+    console.log("categories", categories);
+
     if (currentCategory) {
-      arr = arr.filter((item) => item.category.name === currentCategory);
+      arr = arr.filter((item) => item.category === currentCategory.id);
     }
 
     arr.forEach((item) => {
-      if (!set.has(item.category.name)) {
-        set.add(item.category.name);
+      const category = categories.find((cat) => cat.id === item.category);
+      console.log(category);
+      if (!set.has(item.category)) {
+        set.add(category.name);
         result.push({
-          name: item.category.name,
+          name: category.name,
           items: [{ ...item }],
         });
       } else {
         result[result.length - 1].items.push({ ...item });
       }
     });
+    console.log("result", result);
     return result;
   };
 
@@ -66,7 +72,6 @@ function Content({ toggleSubheader, showDetails }) {
   const loadProducts = async (menuId) => {
     const dataFetch = async (menuId) => {
       const menuData = await get(`/client/menus/${menuId}`);
-      console.log(menuData);
       // Set currency if it's still null
       if (!currency.char_code && menuData) {
         dispatch(setCurrency(menuData.currency));
@@ -75,7 +80,6 @@ function Content({ toggleSubheader, showDetails }) {
       // Set categories
       const categories = Object.values(menuData.categories);
       setCategories(categories);
-      console.log(categories);
 
       setProducts(menuData);
       return menuData;
