@@ -258,6 +258,17 @@ button.btn-primary {
   font-size: 0.9em;
   width: 60%;
 }
+button.btn-outlined {
+  border-radius: 30px;
+  border: 1px solid #e8b225;
+  text-transform: uppercase;
+  background-color: transparent;
+  color: #e8b225;
+  font-weight: 600;
+  height: 45px;
+  font-size: 0.9em;
+  width: 60%;
+}
 button.w-100 {
   width: 100%;
 }
@@ -514,6 +525,11 @@ button.w-100 {
 }
 .cart-item .cart-item-body .card-item-main span {
   font-weight: bolder;
+}
+
+.empty img {
+  width: 300px;
+  opacity: 0.3;
 }
 
 .product-details {

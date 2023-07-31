@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { clearCart } from "../app/cartSlice";
 import vibrate from "../utils/vibrate";
 import { post } from "../lib/fetch";
+import emptyimage from "../assets/NoOrdersImg.png";
 
 function Cart({ show, items }) {
   const dispatch = useDispatch();
@@ -94,7 +95,10 @@ function Cart({ show, items }) {
         </div>
       ) : (
         <div className="content-wrapper empty" style={contentStyle}>
+          <img src={emptyimage} alt="" />
           <h3>Your order is empty.</h3>
+          <br />
+          <button className="btn-outlined">Order something</button>
         </div>
       )}
     </div>

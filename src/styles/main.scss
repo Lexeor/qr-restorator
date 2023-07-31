@@ -191,6 +191,18 @@ button {
     width: 60%;
   }
 
+  &.btn-outlined {
+    border-radius: $border-radius-l;
+    border: 1px solid $color-primary;
+    text-transform: uppercase;
+    background-color: transparent;
+    color: $color-primary;
+    font-weight: 600;
+    height: 45px;
+    font-size: 0.9em;
+    width: 60%;
+  }
+
   &.w-100 {
     width: 100%;
   }
