@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { set } from "../app/restaurantSlice";
 import { set as setCurrency } from "../app/currencySlice";
 import { set as setMenu } from "../app/menuSlice";
+import CategorySkeleton from "./Skeletons/CategorySkeleton";
 
 function Content({ toggleSubheader, showDetails }) {
   const products = useSelector((state) => state.menu);
@@ -139,12 +140,7 @@ function Content({ toggleSubheader, showDetails }) {
         />
       ))
     ) : (
-      <>
-        <div className="skeleton-category-wrapper">
-          <div className="skeleton-category skeleton"></div>
-          <div className="skeleton-category-title skeleton"></div>
-        </div>
-      </>
+      <CategorySkeleton />
     );
 
   const renderCards =
