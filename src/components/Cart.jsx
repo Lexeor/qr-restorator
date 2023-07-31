@@ -7,7 +7,7 @@ import vibrate from "../utils/vibrate";
 import { post } from "../lib/fetch";
 import emptyimage from "../assets/NoOrdersImg.png";
 
-function Cart({ show, items }) {
+function Cart({ show, items, toggleShowCart }) {
   const dispatch = useDispatch();
 
   // Redux data handlers
@@ -98,7 +98,9 @@ function Cart({ show, items }) {
           <img src={emptyimage} alt="" />
           <h3>Your order is empty.</h3>
           <br />
-          <button className="btn-outlined">Order something</button>
+          <button className="btn-outlined" onClick={toggleShowCart}>
+            Order something
+          </button>
         </div>
       )}
     </div>

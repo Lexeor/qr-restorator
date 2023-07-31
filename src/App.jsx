@@ -30,7 +30,7 @@ function App() {
       <NavBar showCart={showCart} toggleShowCart={toggleShowCart} />
       <Subheader />
       <Content toggleSubheader={toggleSubheader} showDetails={showDetails} />
-      <Cart show={showCart} items={cartItems} />
+      <Cart show={showCart} items={cartItems} toggleShowCart={toggleShowCart} />
       <ProductDetails show={showDetails} toggleSubheader={toggleSubheader} />
     </div>
   );
