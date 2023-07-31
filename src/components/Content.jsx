@@ -8,6 +8,7 @@ import { set } from "../app/restaurantSlice";
 import { set as setCurrency } from "../app/currencySlice";
 import { set as setMenu } from "../app/menuSlice";
 import CategorySkeleton from "./Skeletons/CategorySkeleton";
+import MenuSkeleton from "./Skeletons/MenuSkeleton";
 
 function Content({ toggleSubheader, showDetails }) {
   const products = useSelector((state) => state.menu);
@@ -164,7 +165,7 @@ function Content({ toggleSubheader, showDetails }) {
       })
     ) : (
       <>
-        <div className="skeleton-header skeleton"></div>
+        <MenuSkeleton />
       </>
     );
 

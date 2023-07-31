@@ -33,10 +33,10 @@
   }
 }
 
-.skeleton-category {
-  width: 70px;
-  height: 20px;
-  border-radius: $border-radius-s;
+.skeleton-card {
+  width: 100%;
+  height: 120px;
+  border-radius: $border-radius-m;
 }
 
 @keyframes skeleton-loading {
