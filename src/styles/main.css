@@ -78,6 +78,9 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Inter Tight", sans-serif;
+  -webkit-user-select: none; /* Safari */ /* IE 10 and IE 11 */
+  -moz-user-select: none;
+       user-select: none; /* Standard syntax */
 }
 
 hr {
