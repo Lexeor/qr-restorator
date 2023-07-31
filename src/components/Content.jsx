@@ -139,7 +139,12 @@ function Content({ toggleSubheader, showDetails }) {
         />
       ))
     ) : (
-      <>Loading...</>
+      <>
+        <div className="skeleton-category-wrapper">
+          <div className="skeleton-category skeleton"></div>
+          <div className="skeleton-category-title skeleton"></div>
+        </div>
+      </>
     );
 
   const renderCards =
@@ -162,7 +167,9 @@ function Content({ toggleSubheader, showDetails }) {
         );
       })
     ) : (
-      <>Loading...</>
+      <>
+        <div className="skeleton-header skeleton"></div>
+      </>
     );
 
   // Styles

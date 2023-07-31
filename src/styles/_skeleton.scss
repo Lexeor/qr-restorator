@@ -1,0 +1,50 @@
+.skeleton {
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+
+.skeleton-line {
+  height: 1em;
+  width: 200px;
+  border-radius: $border-radius-l;
+}
+
+.skeleton-header {
+  height: 1em;
+  width: 100px;
+  height: 27px;
+  border-radius: $border-radius-l;
+}
+
+.skeleton-category-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+
+  .skeleton-category {
+    width: 70px;
+    height: 70px;
+    border-radius: $border-radius-s;
+  }
+
+  .skeleton-category-title {
+    width: 70px;
+    height: 15px;
+    border-radius: $border-radius-s;
+  }
+}
+
+.skeleton-category {
+  width: 70px;
+  height: 20px;
+  border-radius: $border-radius-s;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: hsl(200, 20%, 70%);
+  }
+
+  100% {
+    background-color: hsl(200, 20%, 95%);
+  }
+}
