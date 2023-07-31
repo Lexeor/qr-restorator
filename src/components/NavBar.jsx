@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import HeaderSkeleton from "./Skeletons/HeaderSkeleton";
 
 const NavBar = ({ showCart, toggleShowCart }) => {
   // Redux data handlers
@@ -10,12 +11,18 @@ const NavBar = ({ showCart, toggleShowCart }) => {
   return (
     <header>
       <div className="nav-location">
-        <div className="nav-location-title">{restName}</div>
-        <div className="nav-location-place">
-          <i className="ri-map-pin-fill"></i>
-          {restAddress}
-        </div>
+        {restName && (
+          <>
+            <div className="nav-location-title">{restName}</div>
+            <div className="nav-location-place">
+              <i className="ri-map-pin-fill"></i>
+              {restAddress}
+            </div>
+          </>
+        )}
+        {!restName && <HeaderSkeleton />}
       </div>
+
       <div className="nav-buttons">
         <button className="menu" onClick={() => toggleShowCart()}>
           {showCart ? (

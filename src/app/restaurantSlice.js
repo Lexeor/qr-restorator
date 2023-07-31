@@ -2,8 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   id: -1,
-  name: "Default name",
-  address: "Default address",
+  name: "",
+  address: "",
   menu: -1,
   table: "null",
 };
