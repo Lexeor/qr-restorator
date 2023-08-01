@@ -37,7 +37,7 @@ const Header = ({ showCart, toggleShowCart }) => {
         </button>
           {orderTotalQuantity > 0 && (
             <button className="menu">
-              <i class="ri-restaurant-2-fill"></i>
+              <i className="ri-restaurant-2-fill"></i>
                 <div className="cart-count">{orderTotalQuantity}</div>
             </button>
           )}
