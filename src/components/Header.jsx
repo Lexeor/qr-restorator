@@ -5,7 +5,7 @@ import HeaderSkeleton from "./Skeletons/HeaderSkeleton";
 const Header = ({ showCart, toggleShowCart }) => {
   // Redux data handlers
   const cartTotalQuantity = useSelector((state) => state.cart.totalQuantity);
-  const orderTotalQuantity = 1;
+  const orderTotalQuantity = useSelector((state) => state.order.totalQuantity);
   const restName = useSelector((state) => state.restaurant.name);
   const restAddress = useSelector((state) => state.restaurant.address);
 

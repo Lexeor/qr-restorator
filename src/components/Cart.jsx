@@ -3,6 +3,7 @@ import CartItem from "./CartItem";
 import Price from "./Price";
 import { useSelector, useDispatch } from "react-redux";
 import { clearCart } from "../app/cartSlice";
+import { addToOrder } from "../app/orderSlice";
 import vibrate from "../utils/vibrate";
 import { post } from "../lib/fetch";
 import emptyimage from "../assets/NoOrdersImg.png";
@@ -45,9 +46,21 @@ function Cart({ show, items, toggleShowCart }) {
       table_id: tableId,
       items: data.map((item) => ({ id: item.id, count: item.quantity })),
     };
-    const response = await post("/order_create/", payload);
+    // const response = await post("/order_create/", payload);
+    const response = await Promise.resolve({
+      data: {
+        items: [
+        {id: 1, quantity: 2},
+        {id: 2, quantity: 1},
+        {id: 3, quantity: 3},
+      ],
+      totalQuantity: 6,
+    }
+    });
     // do something with response
-    console.log(response.data);
+    dispatch(addToOrder(response.data));
+    dispatch(clearCart());
+    toggleShowCart();
   };
 
   // Styles & Classes

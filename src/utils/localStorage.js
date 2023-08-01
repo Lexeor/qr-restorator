@@ -3,9 +3,9 @@ const defaultState = {
   totalQuantity: 0,
 };
 
-export const loadState = () => {
+export const loadState = (stateName) => {
   try {
-    const serializedState = localStorage.getItem("cart");
+    const serializedState = localStorage.getItem(stateName);
     if (serializedState === null) {
       return defaultState;
     } else {
@@ -23,7 +23,7 @@ export const loadState = () => {
   }
 };
 
-export const saveState = (state) => {
+export const saveState = (stateName, state) => {
   const data = {
     timestamp: new Date(),
     state: state,
@@ -31,7 +31,7 @@ export const saveState = (state) => {
 
   try {
     const serializedState = JSON.stringify(data);
-    localStorage.setItem("cart", serializedState);
+    localStorage.setItem(stateName, serializedState);
   } catch {
     // Ignore write errors
   }
