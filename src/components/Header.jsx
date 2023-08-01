@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import HeaderSkeleton from "./Skeletons/HeaderSkeleton";
 
-const Header = ({ showCart, toggleShowCart }) => {
+const Header = ({ showCart, toggleShowCart, toggleShowOrder }) => {
   // Redux data handlers
   const cartTotalQuantity = useSelector((state) => state.cart.totalQuantity);
   const orderTotalQuantity = useSelector((state) => state.order.totalQuantity);
@@ -36,7 +36,7 @@ const Header = ({ showCart, toggleShowCart }) => {
           )}
         </button>
           {orderTotalQuantity > 0 && (
-            <button className="menu">
+            <button className="menu" onClick={() => toggleShowOrder()}>
               <i className="ri-restaurant-2-fill"></i>
                 <div className="cart-count">{orderTotalQuantity}</div>
             </button>
