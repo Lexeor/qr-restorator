@@ -59,3 +59,9 @@ header {
   align-items: center;
   color: $text-dark;
 }
+
+.nav-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5em;
+}

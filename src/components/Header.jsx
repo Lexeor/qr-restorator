@@ -4,7 +4,8 @@ import HeaderSkeleton from "./Skeletons/HeaderSkeleton";
 
 const Header = ({ showCart, toggleShowCart }) => {
   // Redux data handlers
-  const totalQuantity = useSelector((state) => state.cart.totalQuantity);
+  const cartTotalQuantity = useSelector((state) => state.cart.totalQuantity);
+  const orderTotalQuantity = 1;
   const restName = useSelector((state) => state.restaurant.name);
   const restAddress = useSelector((state) => state.restaurant.address);
 
@@ -30,10 +31,16 @@ const Header = ({ showCart, toggleShowCart }) => {
           ) : (
             <i className="ri-shopping-cart-line"></i>
           )}
-          {totalQuantity > 0 && (
-            <div className="cart-count">{totalQuantity}</div>
+          {cartTotalQuantity > 0 && (
+            <div className="cart-count">{cartTotalQuantity}</div>
           )}
         </button>
+          {orderTotalQuantity > 0 && (
+            <button className="menu">
+              <i class="ri-restaurant-2-fill"></i>
+                <div className="cart-count">{orderTotalQuantity}</div>
+            </button>
+          )}
       </div>
     </header>
   );

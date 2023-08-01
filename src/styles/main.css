@@ -57,6 +57,12 @@ header {
   color: rgb(19, 19, 19);
 }
 
+.nav-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5em;
+}
+
 /** 
 * scrollbars mixin
  * @param  {size}                Scrollbar handler width & height
