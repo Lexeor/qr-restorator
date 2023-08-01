@@ -1,6 +1,7 @@
 import React from 'react';
 import Price from './Price';
 import { useSelector } from 'react-redux';
+import OrderItem from './OrderItem';
 
 function Order({show}) {
 
@@ -37,7 +38,7 @@ function Order({show}) {
   // Renders
   const renderItems = orderItems.length > 0 ?
   (orderItems.map((item, index) => (
-    <div key={index}>{item.name} {item.quantity}</div>
+    <OrderItem key={index} item={item} />
   ))) : (
     <></>
   );
@@ -48,9 +49,9 @@ function Order({show}) {
           <div className="panel-header">
             <h2>Your current check</h2>
           </div>
-          <section className="cart-items-wrapper">
+          <section className="order-items-wrapper">
             {renderItems}
-            </section>
+          </section>
           <hr />
           <div className="totals">
             <div className="total-row">

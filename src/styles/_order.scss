@@ -1,0 +1,51 @@
+.order-items-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+.order-item {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+
+  img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: $border-radius-s;
+  }
+
+  .order-item-body {
+    flex-grow: 1;
+    width: 100%;
+    padding: 0.5em 0 0.5em 0.5em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .order-item-main {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+    }
+
+    .order-item-quantity {
+      width: 20px;
+      flex-shrink: 0;
+      color: $text-secondary;
+      text-align: center;
+    }
+
+    .order-item-price {
+      width: 55px;
+      flex-shrink: 0;
+      text-align: end;
+    }
+  }
+}

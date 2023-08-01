@@ -50,12 +50,13 @@ function Cart({ show, items, toggleShowCart }) {
     const response = await Promise.resolve({
       data: {
         items: [
-        {id: 1, quantity: 2},
-        {id: 2, quantity: 1},
-        {id: 3, quantity: 3},
-      ],
-      totalQuantity: 6,
-    }
+          { id: 1, quantity: 2 },
+          { id: 2, quantity: 1 },
+          { id: 4, quantity: 12 },
+          { id: 3, quantity: 3 },
+        ],
+        totalQuantity: 6,
+      },
     });
     // do something with response
     dispatch(setOrder(response.data));
