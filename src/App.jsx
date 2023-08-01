@@ -19,10 +19,12 @@ function App() {
 
   // Functions
   function toggleShowCart() {
+    setShowOrder(false);
     setShowCart((prev) => !prev);
   }
 
   function toggleShowOrder() {
+    setShowCart(false);
     setShowOrder((prev) => !prev);
   }
 
