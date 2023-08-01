@@ -665,10 +665,9 @@ button.w-100 {
   text-align: end;
 }
 
-.panel-header.order {
-  flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
+.panel-header.order span {
+  margin-bottom: 0.5em;
+  color: rgba(75, 75, 75, 0.5);
 }
 
 .product-details {

@@ -79,8 +79,9 @@
 
 .panel-header {
   &.order {
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
+    span {
+      margin-bottom: 0.5em;
+      color: rgba($text-secondary, 0.5);
+    }
   }
 }

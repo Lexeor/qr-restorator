@@ -6,6 +6,8 @@ import OrderItem from "./OrderItem";
 function Order({ show }) {
   // Redux data handlers
   const menuItems = useSelector((state) => state.menu.items);
+  const orderId = useSelector((state) => state.order.orderId);
+  const totalPrice = useSelector((state) => state.order.totalPrice);
 
   let orderItems = useSelector((state) => state.order.itemsList);
 
@@ -53,6 +55,7 @@ function Order({ show }) {
       <div className="content-wrapper order" style={cartContentStyle}>
         <div className="panel-header order">
           <h2>Your current check</h2>
+          <span>Order # {orderId}</span>
         </div>
         <div className="order-table-headers">
           <span id="name">Name</span>
@@ -65,7 +68,7 @@ function Order({ show }) {
           <div className="total-row">
             <span>Total</span>
             <strong>
-              <Price>100</Price>
+              <Price>{totalPrice}</Price>
             </strong>
           </div>
         </div>
