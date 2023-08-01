@@ -5,12 +5,17 @@
   gap: 0.5em;
   width: 100%;
   overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .order-item {
   display: flex;
   flex-direction: row;
   flex-grow: 1;
+  gap: 0.5em;
 
   img {
     width: 40px;
@@ -22,7 +27,7 @@
   .order-item-body {
     flex-grow: 1;
     width: 100%;
-    padding: 0.5em 0 0.5em 0.5em;
+    padding: 0;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -47,5 +52,35 @@
       flex-shrink: 0;
       text-align: end;
     }
+  }
+}
+
+.order-table-headers {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  border-bottom: 1px dashed rgba($text-secondary, 0.5);
+
+  #name {
+    flex-grow: 1;
+  }
+
+  #qty {
+    width: 25px;
+    flex-shrink: 0;
+  }
+
+  #total {
+    width: 55px;
+    flex-shrink: 0;
+    text-align: end;
+  }
+}
+
+.panel-header {
+  &.order {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
   }
 }

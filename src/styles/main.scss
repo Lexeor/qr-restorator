@@ -28,7 +28,7 @@ hr {
   height: 0;
   margin: 0;
   border: 0;
-  border-top: 1px solid rgba($text-secondary, 0.5);
+  border-top: 1px dashed rgba($text-secondary, 0.5);
 }
 
 // Typographics
@@ -124,6 +124,12 @@ main {
   &.cart {
     display: grid;
     grid-template-rows: 30px 1fr 2px 1.3em 45px;
+    gap: 1em;
+  }
+
+  &.order {
+    display: grid;
+    grid-template-rows: 30px 30px 1fr 2px 1.3em 45px;
     gap: 1em;
   }
 

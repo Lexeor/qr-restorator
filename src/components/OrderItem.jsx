@@ -9,7 +9,7 @@ function OrderItem({ item }) {
       <img src={item.image ? serverUrl + item.image : nullImage} alt="" />
       <div className="order-item-body">
         <div className="order-item-main">
-          <span>{item.name}</span>
+          <strong>{item.name}</strong>
         </div>
         <span className="order-item-quantity">{item.quantity}</span>
         <strong className="order-item-price">

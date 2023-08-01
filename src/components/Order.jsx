@@ -1,27 +1,27 @@
-import React from 'react';
-import Price from './Price';
-import { useSelector } from 'react-redux';
-import OrderItem from './OrderItem';
+import React from "react";
+import Price from "./Price";
+import { useSelector } from "react-redux";
+import OrderItem from "./OrderItem";
 
-function Order({show}) {
-
+function Order({ show }) {
   // Redux data handlers
   const menuItems = useSelector((state) => state.menu.items);
-  
+
   let orderItems = useSelector((state) => state.order.itemsList);
 
-  if(orderItems.length > 0 && menuItems.length > 0) {
-    orderItems = orderItems.map(item => {
-      const mitem = menuItems.find(mitem => mitem.id === item.id);
-      
-      return ({
+  if (orderItems.length > 0 && menuItems.length > 0) {
+    orderItems = orderItems.map((item) => {
+      const mitem = menuItems.find((mitem) => mitem.id === item.id);
+
+      return {
         id: item.id,
         name: mitem.name,
         description: mitem.description,
         price: mitem.price,
         image: mitem.image,
         quantity: item.quantity,
-      })});
+      };
+    });
   }
 
   // Styles & Classes
@@ -36,34 +36,37 @@ function Order({show}) {
   };
 
   // Renders
-  const renderItems = orderItems.length > 0 ?
-  (orderItems.map((item, index) => (
-    <OrderItem key={index} item={item} />
-  ))) : (
-    <></>
-  );
+  const renderItems =
+    orderItems.length > 0 ? (
+      orderItems.map((item, index) => <OrderItem key={index} item={item} />)
+    ) : (
+      <></>
+    );
 
   return (
     <div className={containerClass}>
-      <div className="content-wrapper cart" style={cartContentStyle}>
-          <div className="panel-header">
-            <h2>Your current check</h2>
-          </div>
-          <section className="order-items-wrapper">
-            {renderItems}
-          </section>
-          <hr />
-          <div className="totals">
-            <div className="total-row">
-              <span>Total</span>
-              <strong>
-                <Price>100</Price>
-              </strong>
-            </div>
+      <div className="content-wrapper order" style={cartContentStyle}>
+        <div className="panel-header order">
+          <h2>Your current check</h2>
+        </div>
+        <div className="order-table-headers">
+          <span id="name">Name</span>
+          <span id="qty">Qty</span>
+          <span id="total">Total</span>
+        </div>
+        <section className="order-items-wrapper">{renderItems}</section>
+        <hr />
+        <div className="totals">
+          <div className="total-row">
+            <span>Total</span>
+            <strong>
+              <Price>100</Price>
+            </strong>
           </div>
         </div>
+      </div>
     </div>
-  )
+  );
 }
 
-export default Order
+export default Order;
