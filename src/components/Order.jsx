@@ -24,6 +24,11 @@ function Order({ show }) {
     });
   }
 
+  // Functions
+  function handleRequestCheck() {
+    console.log("Check please!");
+  }
+
   // Styles & Classes
   const containerClass = show ? "panel cart" : "panel cart hidden";
 
@@ -64,6 +69,12 @@ function Order({ show }) {
             </strong>
           </div>
         </div>
+        <button
+          className="btn-primary w-100"
+          onClick={() => handleRequestCheck()}
+        >
+          Request check
+        </button>
       </div>
     </div>
   );

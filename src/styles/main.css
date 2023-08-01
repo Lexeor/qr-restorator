@@ -524,6 +524,7 @@ button.w-100 {
 .panel.product {
   min-height: calc(100vh - 110px);
   top: 110px;
+  z-index: 101;
 }
 .panel.hidden {
   top: 100vh;
