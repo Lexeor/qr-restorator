@@ -7,10 +7,10 @@ const orderSlice = createSlice({
   name: "order",
   initialState,
   reducers: {
-    addToOrder: (state, action) => {
+    setOrder: (state, action) => {
       console.log('payload', action.payload);
-      state.itemsList = [...state.itemsList, ...action.payload.items];
-      state.totalQuantity = state.totalQuantity + action.payload.totalQuantity;
+      state.itemsList = action.payload.items;
+      state.totalQuantity = action.payload.totalQuantity;
       saveState("order", state);
     },
     clearOrder: state => {
@@ -22,4 +22,4 @@ const orderSlice = createSlice({
 });
 
 export default orderSlice.reducer;
-export const { addToOrder, clearOrder } = orderSlice.actions;
+export const { setOrder, clearOrder } = orderSlice.actions;

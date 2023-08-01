@@ -3,7 +3,7 @@ import CartItem from "./CartItem";
 import Price from "./Price";
 import { useSelector, useDispatch } from "react-redux";
 import { clearCart } from "../app/cartSlice";
-import { addToOrder } from "../app/orderSlice";
+import { setOrder } from "../app/orderSlice";
 import vibrate from "../utils/vibrate";
 import { post } from "../lib/fetch";
 import emptyimage from "../assets/NoOrdersImg.png";
@@ -58,7 +58,7 @@ function Cart({ show, items, toggleShowCart }) {
     }
     });
     // do something with response
-    dispatch(addToOrder(response.data));
+    dispatch(setOrder(response.data));
     dispatch(clearCart());
     toggleShowCart();
   };
