@@ -1,5 +1,5 @@
 import { useState } from "react";
-import NavBar from "./components/NavBar";
+import Header from "./components/Header";
 import Content from "./components/Content";
 import Cart from "./components/Cart";
 import ProductDetails from "./components/ProductDetails";
@@ -27,7 +27,7 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar showCart={showCart} toggleShowCart={toggleShowCart} />
+      <Header showCart={showCart} toggleShowCart={toggleShowCart} />
       <Subheader />
       <Content toggleSubheader={toggleSubheader} showDetails={showDetails} />
       <Cart show={showCart} items={cartItems} toggleShowCart={toggleShowCart} />

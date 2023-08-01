@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import HeaderSkeleton from "./Skeletons/HeaderSkeleton";
 
-const NavBar = ({ showCart, toggleShowCart }) => {
+const Header = ({ showCart, toggleShowCart }) => {
   // Redux data handlers
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
   const restName = useSelector((state) => state.restaurant.name);
@@ -39,4 +39,4 @@ const NavBar = ({ showCart, toggleShowCart }) => {
   );
 };
 
-export default NavBar;
+export default Header;
