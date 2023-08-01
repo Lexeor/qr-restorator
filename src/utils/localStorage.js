@@ -1,13 +1,21 @@
 const defaultState = {
-  itemsList: [],
-  totalQuantity: 0,
+  cart: {
+    itemsList: [],
+    totalQuantity: 0,
+  },
+  order: {
+    orderId: -1,
+    itemsList: [],
+    totalQuantity: 0,
+    totalPrice: 0,
+  },
 };
 
 export const loadState = (stateName) => {
   try {
     const serializedState = localStorage.getItem(stateName);
     if (serializedState === null) {
-      return defaultState;
+      return defaultState[stateName];
     } else {
       const data = JSON.parse(serializedState);
       const diff = new Date() - new Date(data.timestamp);
@@ -15,11 +23,11 @@ export const loadState = (stateName) => {
       if (diff < 3.6e6) {
         return data.state;
       } else {
-        return defaultState;
+        return defaultState[stateName];
       }
     }
   } catch (err) {
-    return defaultState;
+    return defaultState[stateName];
   }
 };
 

@@ -49,6 +49,7 @@ function Cart({ show, items, toggleShowCart }) {
     // const response = await post("/order_create/", payload);
     const response = await Promise.resolve({
       data: {
+        orderId: 123,
         items: [
           { id: 1, quantity: 2 },
           { id: 2, quantity: 1 },
@@ -56,6 +57,7 @@ function Cart({ show, items, toggleShowCart }) {
           { id: 3, quantity: 3 },
         ],
         totalQuantity: 6,
+        totalPrice: 1200,
       },
     });
     // do something with response
