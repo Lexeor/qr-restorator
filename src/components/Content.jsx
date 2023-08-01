@@ -54,7 +54,7 @@ function Content({ toggleSubheader, showDetails }) {
       const category = categories.find((cat) => cat.id === item.category);
 
       if (category) {
-        if (!set.has(item.category)) {
+        if (!set.has(category.name)) {
           set.add(category.name);
           products.push({
             name: category.name,
