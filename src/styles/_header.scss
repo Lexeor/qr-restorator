@@ -24,6 +24,7 @@ header {
     flex-direction: row;
     align-items: center;
     gap: 6px;
+    color: rgba($text-light, 0.8);
 
     i {
       color: $color-primary;

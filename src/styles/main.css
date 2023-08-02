@@ -23,6 +23,7 @@ header {
   flex-direction: row;
   align-items: center;
   gap: 6px;
+  color: rgba(245, 245, 245, 0.8);
 }
 .nav-location .nav-location-place i {
   color: #e8b225;
