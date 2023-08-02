@@ -18,6 +18,8 @@ function Cart({ show, items, toggleShowCart }) {
     }, 0)
   );
 
+  const order = useSelector((state) => state.order.orderId);
+
   const totalQuantity = useSelector((state) => {
     return state.cart.totalQuantity;
   });
@@ -106,7 +108,7 @@ function Cart({ show, items, toggleShowCart }) {
             className="btn-primary w-100"
             onClick={() => handleSubmit(cartItems, restId, tableId)}
           >
-            Checkout
+            {order === -1 ? "Place order" : "Add to current order"}
           </button>
         </div>
       ) : (
