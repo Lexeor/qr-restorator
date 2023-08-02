@@ -25,22 +25,26 @@ const Header = ({ showCart, toggleShowCart, toggleShowOrder }) => {
       </div>
 
       <div className="nav-buttons">
-        <button className="menu" onClick={() => toggleShowCart()}>
-          {showCart ? (
-            <i className="ri-bill-line"></i>
-          ) : (
-            <i className="ri-shopping-cart-line"></i>
-          )}
-          {cartTotalQuantity > 0 && (
-            <div className="cart-count">{cartTotalQuantity}</div>
-          )}
-        </button>
-          {orderTotalQuantity > 0 && (
-            <button className="menu" onClick={() => toggleShowOrder()}>
-              <i className="ri-restaurant-2-fill"></i>
-                <div className="cart-count">{orderTotalQuantity}</div>
-            </button>
-          )}
+        {/* Cart Button */}
+        {(orderTotalQuantity === 0 || cartTotalQuantity > 0) && (
+          <button className="menu" onClick={() => toggleShowCart()}>
+            {showCart ? (
+              <i className="ri-bill-line"></i>
+            ) : (
+              <i className="ri-shopping-cart-line"></i>
+            )}
+            {cartTotalQuantity > 0 && (
+              <div className="cart-count">{cartTotalQuantity}</div>
+            )}
+          </button>
+        )}
+        {/* Order Button */}
+        {orderTotalQuantity > 0 && (
+          <button className="menu" onClick={() => toggleShowOrder()}>
+            <i className="ri-restaurant-2-fill"></i>
+            <div className="cart-count">{orderTotalQuantity}</div>
+          </button>
+        )}
       </div>
     </header>
   );
