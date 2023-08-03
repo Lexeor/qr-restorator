@@ -737,9 +737,11 @@ button.w-100 {
   display: flex;
   flex-direction: column;
   transition: opacity 0.5s ease-in-out;
+  z-index: 205;
 }
 .popup-layout.hidden {
   opacity: 0;
+  pointer-events: none;
 }
 
 .popup-panel {

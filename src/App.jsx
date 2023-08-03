@@ -9,15 +9,16 @@ import Popup from "./components/Popup";
 
 import { useSelector, useDispatch } from "react-redux";
 import { set } from "./app/selectedSlice";
+import { toggle } from "./app/popupSlice";
 
 function App() {
   const dispatch = useDispatch();
   const [showCart, setShowCart] = useState(false);
   const [showOrder, setShowOrder] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
-  const [showPopup, setShowPopup] = useState(true);
 
   const cartItems = useSelector((state) => state.cart.itemsList);
+  const showPopup = useSelector((state) => state.popup.show);
 
   // Functions
   function toggleShowCart() {
@@ -36,8 +37,7 @@ function App() {
   }
 
   function togglePopup() {
-    console.log("toggle");
-    setShowPopup((prev) => !prev);
+    dispatch(toggle());
   }
 
   return (

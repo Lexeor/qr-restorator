@@ -7,6 +7,7 @@ import { setOrder } from "../app/orderSlice";
 import vibrate from "../utils/vibrate";
 import { post } from "../lib/fetch";
 import emptyimage from "../assets/NoOrdersImg.png";
+import { toggle } from "../app/popupSlice";
 
 function Cart({ show, items, toggleShowCart }) {
   const dispatch = useDispatch();
@@ -54,6 +55,7 @@ function Cart({ show, items, toggleShowCart }) {
     dispatch(setOrder(response.data));
     dispatch(clearCart());
     toggleShowCart();
+    dispatch(toggle());
   };
 
   // Styles & Classes
