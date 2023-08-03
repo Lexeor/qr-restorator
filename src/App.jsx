@@ -5,6 +5,7 @@ import Cart from "./components/Cart";
 import Order from "./components/Order";
 import ProductDetails from "./components/ProductDetails";
 import Subheader from "./components/Subheader";
+import Popup from "./components/Popup";
 
 import { useSelector, useDispatch } from "react-redux";
 import { set } from "./app/selectedSlice";
@@ -14,6 +15,7 @@ function App() {
   const [showCart, setShowCart] = useState(false);
   const [showOrder, setShowOrder] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
+  const [showPopup, setShowPopup] = useState(true);
 
   const cartItems = useSelector((state) => state.cart.itemsList);
 
@@ -33,14 +35,29 @@ function App() {
     setShowDetails((prev) => !prev);
   }
 
+  function togglePopup() {
+    console.log("toggle");
+    setShowPopup((prev) => !prev);
+  }
+
   return (
     <div className="App">
-      <Header showCart={showCart} toggleShowCart={toggleShowCart} toggleShowOrder={toggleShowOrder} />
+      <Header
+        showCart={showCart}
+        toggleShowCart={toggleShowCart}
+        toggleShowOrder={toggleShowOrder}
+      />
       <Subheader />
       <Content toggleSubheader={toggleSubheader} showDetails={showDetails} />
       <Cart show={showCart} items={cartItems} toggleShowCart={toggleShowCart} />
       <Order show={showOrder} toggleShowOrder={toggleShowOrder} />
       <ProductDetails show={showDetails} toggleSubheader={toggleSubheader} />
+      <Popup
+        show={showPopup}
+        title="Order created"
+        content={<div>Children</div>}
+        togglePopup={togglePopup}
+      />
     </div>
   );
 }

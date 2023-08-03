@@ -725,4 +725,34 @@ button.w-100 {
 }
 .product-footer .price-container strong {
   font-size: 1.4em;
+}
+
+.popup-layout {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  transition: opacity 0.5s ease-in-out;
+}
+.popup-layout.hidden {
+  opacity: 0;
+}
+
+.popup-panel {
+  margin: auto;
+  width: 90%;
+  background-color: #eeeeee;
+  padding: 1em;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  font-size: large;
+}
+.popup-panel h2 {
+  margin: 0 auto;
 }/*# sourceMappingURL=main.css.map */

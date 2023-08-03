@@ -1,0 +1,31 @@
+.popup-layout {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: $color-layout-shaded;
+  display: flex;
+  flex-direction: column;
+  transition: opacity 0.5s ease-in-out;
+
+  &.hidden {
+    opacity: 0;
+  }
+}
+
+.popup-panel {
+  margin: auto;
+  width: 90%;
+  background-color: $color-background-light;
+  padding: 1em;
+  border-radius: $border-radius-m;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  font-size: large;
+
+  h2 {
+    margin: 0 auto;
+  }
+}
