@@ -6,6 +6,7 @@ const initialState = {
   table: "",
   totalQuantity: 0,
   totalPrice: 0,
+  paymentType: "cash",
 };
 
 const orderSlice = createSlice({
@@ -30,8 +31,11 @@ const orderSlice = createSlice({
     clearOrder: (state) => {
       state = initialState;
     },
+    setPaymentType: (state, action) => {
+      state.paymentType = action.payload;
+    },
   },
 });
 
 export default orderSlice.reducer;
-export const { setOrder, clearOrder } = orderSlice.actions;
+export const { setOrder, clearOrder, setPaymentType } = orderSlice.actions;

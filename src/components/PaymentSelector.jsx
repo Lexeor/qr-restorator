@@ -1,15 +1,19 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setPaymentType } from "../app/orderSlice";
 
 function PaymentSelector() {
-  const [selected, setSelected] = useState(0);
+  // Redux handlers
+  const dispatch = useDispatch();
+  const paymentType = useSelector((state) => state.order.paymentType);
 
   // Functions
-  const handleSelection = (id) => {
-    setSelected(id);
+  const handleSelection = (type) => {
+    dispatch(setPaymentType(type));
   };
 
   // Styles & Classes
-  const dummyStyle = selected === 1 ? { width: "50%" } : { width: "0" };
+  const dummyStyle = paymentType === "cash" ? { width: "0" } : { width: "50%" };
 
   return (
     <div className="selector-body">
@@ -18,11 +22,11 @@ function PaymentSelector() {
         <div className="selector-selection"></div>
       </div>
       <div className="selector-items-wrapper">
-        <div className="selector-item" onClick={() => handleSelection(0)}>
+        <div className="selector-item" onClick={() => handleSelection("cash")}>
           <i className="ri-cash-line"></i>
           <span>Cash</span>
         </div>
-        <div className="selector-item" onClick={() => handleSelection(1)}>
+        <div className="selector-item" onClick={() => handleSelection("card")}>
           <i className="ri-bank-card-line"></i>
           <span>Card</span>
         </div>
