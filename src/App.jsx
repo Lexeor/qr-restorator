@@ -9,7 +9,6 @@ import Popup from "./components/Popup";
 
 import { useSelector, useDispatch } from "react-redux";
 import { set } from "./app/selectedSlice";
-import { toggle } from "./app/popupSlice";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,10 +35,6 @@ function App() {
     setShowDetails((prev) => !prev);
   }
 
-  function togglePopup() {
-    dispatch(toggle());
-  }
-
   return (
     <div className="App">
       <Header
@@ -56,7 +51,6 @@ function App() {
         show={showPopup}
         title="Order created"
         content={<div>Children</div>}
-        togglePopup={togglePopup}
       />
     </div>
   );

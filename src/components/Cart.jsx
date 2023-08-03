@@ -7,7 +7,7 @@ import { setOrder } from "../app/orderSlice";
 import vibrate from "../utils/vibrate";
 import { post } from "../lib/fetch";
 import emptyimage from "../assets/NoOrdersImg.png";
-import { toggle } from "../app/popupSlice";
+import { openPopup } from "../app/popupSlice";
 
 function Cart({ show, items, toggleShowCart }) {
   const dispatch = useDispatch();
@@ -55,7 +55,10 @@ function Cart({ show, items, toggleShowCart }) {
     dispatch(setOrder(response.data));
     dispatch(clearCart());
     toggleShowCart();
-    dispatch(toggle());
+
+    // Popup type selection (if order already created or not)
+    const popupType = order.orderId !== -1 ? "orderReplenish" : "orderCreate";
+    dispatch(openPopup(popupType));
   };
 
   // Styles & Classes

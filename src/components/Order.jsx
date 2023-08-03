@@ -1,10 +1,12 @@
 import React from "react";
 import Price from "./Price";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import OrderItem from "./OrderItem";
+import { openPopup } from "../app/popupSlice";
 
 function Order({ show }) {
   // Redux data handlers
+  const dispatch = useDispatch();
   const menuItems = useSelector((state) => state.menu.items);
   const orderId = useSelector((state) => state.order.orderId);
   const totalPrice = useSelector((state) => state.order.totalPrice);
@@ -28,7 +30,7 @@ function Order({ show }) {
 
   // Functions
   function handleRequestCheck() {
-    console.log("Check please!");
+    dispatch(openPopup("checkConfirm"));
   }
 
   // Styles & Classes

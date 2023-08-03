@@ -747,6 +747,7 @@ button.w-100 {
 .popup-panel {
   margin: auto;
   width: 90%;
+  max-width: 400px;
   background-color: #eeeeee;
   padding: 1em;
   border-radius: 20px;
@@ -757,4 +758,10 @@ button.w-100 {
 }
 .popup-panel h2 {
   margin: 0 auto;
+}
+
+.buttons-row {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
 }/*# sourceMappingURL=main.css.map */

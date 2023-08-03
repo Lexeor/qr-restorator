@@ -19,6 +19,7 @@
 .popup-panel {
   margin: auto;
   width: 90%;
+  max-width: 400px;
   background-color: $color-background-light;
   padding: 1em;
   border-radius: $border-radius-m;
@@ -30,4 +31,10 @@
   h2 {
     margin: 0 auto;
   }
+}
+
+.buttons-row {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
 }
