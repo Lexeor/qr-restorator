@@ -48,20 +48,8 @@ function Cart({ show, items, toggleShowCart }) {
       table_id: tableId,
       items: data.map((item) => ({ id: item.id, count: item.quantity })),
     };
-    // const response = await post("/order_create/", payload);
-    const response = await Promise.resolve({
-      data: {
-        orderId: 123,
-        items: [
-          { id: 1, quantity: 2 },
-          { id: 2, quantity: 1 },
-          { id: 4, quantity: 12 },
-          { id: 3, quantity: 3 },
-        ],
-        totalQuantity: 6,
-        totalPrice: 1200,
-      },
-    });
+    const response = await post("/client/order/", payload);
+
     // do something with response
     dispatch(setOrder(response.data));
     dispatch(clearCart());

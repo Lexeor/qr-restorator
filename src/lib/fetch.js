@@ -21,7 +21,11 @@ export const get = async (url, params = {}) => {
     const response = await instance.get(url, config);
     return response.data;
   } catch (error) {
-    errorLogger(error);
+    if (error.response.status === 400) {
+      return { status: error.response.status, data: error.response.data };
+    } else {
+      errorLogger(error);
+    }
   }
 };
 

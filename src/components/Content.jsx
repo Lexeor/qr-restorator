@@ -9,6 +9,7 @@ import { set as setCurrency } from "../app/currencySlice";
 import { set as setMenu } from "../app/menuSlice";
 import CategorySkeleton from "./Skeletons/CategorySkeleton";
 import MenuSkeleton from "./Skeletons/MenuSkeleton";
+import { setOrder } from "../app/orderSlice";
 
 function Content({ toggleSubheader, showDetails }) {
   const products = useSelector((state) => state.menu);
@@ -111,9 +112,27 @@ function Content({ toggleSubheader, showDetails }) {
     await dataFetch(menuId);
   };
 
+  const loadOrder = async (restId, tableId) => {
+    const dataFetch = async (restId, tableId) => {
+      const orderData = await get(
+        `/client/order/?restaurant_id=${restId}&table_id=${tableId}`
+      );
+
+      if (orderData?.status === 400) {
+        return {};
+      } else {
+        dispatch(setOrder(orderData));
+        return orderData;
+      }
+    };
+
+    await dataFetch(restId, tableId);
+  };
+
   // Side effects
   useEffect(() => {
     loadRestaurantInfo(restId, tableNo);
+    loadOrder(restId, tableNo);
     // eslint-disable-next-line
   }, []);
 

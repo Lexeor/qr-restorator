@@ -9,19 +9,19 @@ function Order({ show }) {
   const orderId = useSelector((state) => state.order.orderId);
   const totalPrice = useSelector((state) => state.order.totalPrice);
 
-  let orderItems = useSelector((state) => state.order.itemsList);
+  let orderItems = useSelector((state) => state.order.items);
 
   if (orderItems.length > 0 && menuItems.length > 0) {
     orderItems = orderItems.map((item) => {
-      const mitem = menuItems.find((mitem) => mitem.id === item.id);
+      const mitem = menuItems.find((mitem) => mitem.id === item.product_id);
 
       return {
         id: item.id,
         name: mitem.name,
         description: mitem.description,
-        price: mitem.price,
+        price: item.price * item.count,
         image: mitem.image,
-        quantity: item.quantity,
+        quantity: item.count,
       };
     });
   }

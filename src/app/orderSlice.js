@@ -1,24 +1,34 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loadState, saveState } from "../utils/localStorage";
 
-const initialState = loadState("order");
+const initialState = {
+  items: [],
+  orderId: -1,
+  table: "",
+  totalQuantity: 0,
+  totalPrice: 0,
+};
 
 const orderSlice = createSlice({
   name: "order",
   initialState,
   reducers: {
     setOrder: (state, action) => {
-      console.log("payload", action.payload);
-      state.orderId = action.payload.orderId;
-      state.itemsList = action.payload.items;
-      state.totalQuantity = action.payload.totalQuantity;
-      state.totalPrice = action.payload.totalPrice;
-      saveState("order", state);
+      // console.log("payload", action.payload);
+      state.orderId = action.payload.order_id;
+      state.items = action.payload.items;
+      state.table = action.payload.table;
+
+      state.totalQuantity = action.payload.items.reduce(
+        (acc, item) => acc + item.count,
+        0
+      );
+      state.totalPrice = action.payload.items.reduce(
+        (acc, item) => acc + item.count * item.price,
+        0
+      );
     },
     clearOrder: (state) => {
-      state.itemsList = [];
-      state.totalQuantity = 0;
-      saveState("order", state);
+      state = initialState;
     },
   },
 });
