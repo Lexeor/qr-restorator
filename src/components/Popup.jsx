@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { closePopup } from "../app/popupSlice";
+import PaymentSelector from "./PaymentSelector";
 
 const titles = {
   orderCreate: "Order created",
@@ -47,7 +48,7 @@ function Popup({ show = false }) {
           // Confirm check
           <>
             <div>{contents[type]}</div>
-
+            <PaymentSelector />
             <div className="buttons-row">
               <button
                 className="btn-outlined w-100"

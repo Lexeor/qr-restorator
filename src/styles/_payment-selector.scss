@@ -1,0 +1,53 @@
+.selector-body {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  background-color: $color-background-gray;
+  border-radius: $border-radius-m;
+  padding: 4px;
+  height: 45px;
+  gap: 4px;
+  z-index: 100;
+}
+
+.selector-items-wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  z-index: 102;
+}
+
+.selector-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1em;
+  gap: 10px;
+  width: 50%;
+
+  i {
+    font-size: 1.4em;
+  }
+}
+
+.selector-wrapper {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  width: calc(100% - 8px);
+  border-radius: $border-radius-m-inner;
+}
+
+.selector-selection {
+  height: 37px;
+  width: 50%;
+  background-color: $color-white;
+  border-radius: $border-radius-m-inner;
+}
+
+.selector-dummy {
+  height: 37px;
+  width: 0;
+  transition: all 0.3s ease-in-out;
+}
