@@ -22,6 +22,10 @@ Welcome to the QR Restorator! This application allows customers to conveniently 
 - Axios for making HTTP requests to the API.
 - HTML, CSS (Sass), and JavaScript for frontend styling and interactivity.
 
+## Roadmap
+
+- [ ] Add request for check to the server
+
 ## License
 
 This project is licensed under the [MIT License](https://opensource.org/license/mit/). Feel free to use and modify the code as per your needs.
