@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { closePopup } from "../app/popupSlice";
 import PaymentSelector from "./PaymentSelector";
+import { post } from "../lib/fetch";
 
 const titles = {
   orderCreate: "Order created",
@@ -23,6 +24,9 @@ function Popup({ show = false }) {
   const dispatch = useDispatch();
 
   const type = useSelector((state) => state.popup.type);
+  const tableId = useSelector((state) => state.restaurant.table);
+  const restaurantId = useSelector((state) => state.restaurant.id);
+  const paymentType = useSelector((state) => state.order.paymentType);
 
   // Functions
   const handleOkClick = () => {
@@ -33,8 +37,19 @@ function Popup({ show = false }) {
     dispatch(closePopup());
   };
 
-  const handleConfirmCheckClick = () => {
-    console.log("Check please!");
+  const handleConfirmCheckClick = async () => {
+    const numType = paymentType === "card" ? 1 : 0;
+
+    let payload = {
+      restaurant_id: restaurantId,
+      table_id: tableId,
+      pay_type: numType,
+    };
+    const response = await post("/client/order/checkout/", payload);
+    console.log(response.data);
+
+    console.log("Check requested");
+    dispatch(closePopup());
   };
 
   // Styles & Classes
